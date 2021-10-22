@@ -3,26 +3,8 @@ import React from 'react'
 export const Footer: React.FC = () => {
   return (
     <footer className="px-2 sm:px-6 text-center mb-2 sm:mb-6 mt-4">
-      <h5 className="text-md sm:text-lg font-bold">Backed by</h5>
-      <div className="hidden sm:block select-none">
-        <div className="mt-6 flex flex-row items-end justify-center space-x-6">
-          <img src="/images/backed/alameda.svg" width={216} height={44} />
-          <img src="/images/backed/qtum.svg" width={100} height={32} />
-          <img src="/images/backed/ngc.svg" width={178} height={20} />
-        </div>
-        <div className="mt-6 flex flex-row items-center justify-center space-x-6">
-          <img src="/images/backed/sino.svg" width={80} height={24} />
-          <img src="/images/backed/petrock.svg" width={98} height={24} />
-          <img src="/images/backed/svc.svg" width={68} height={24} />
-          <img src="/images/backed/rock.svg" width={74} height={24} />
-          <img src="/images/backed/mgnr.svg" width={105} height={24} />
-          <img src="/images/backed/coin98.svg" width={82} height={24} />
-          <img src="/images/backed/solana.svg" width={98} height={24} />
-        </div>
-      </div>
-      <div className="sm:hidden my-2 mx-2">
-        <img src="/images/backed/all.png" width="100%" />
-      </div>
+      <div className="leading-5"><a className="underline text-inputSecondary" href="https://raydium.io/swap/?from=11111111111111111111111111111111&to=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v" target="_blank" rel="noreferrer">Swap SOL to USDC on Raydium</a> or transfer USDC from a CEX (FTX, Binance, etc) on the Solana network.<br /></div>
+      <div className="mt-2"><a className="underline text-inputSecondary" href="https://b5248a16.sibforms.com/serve/MUIEAHTnEW8RVVNoC8ehxvP_9x2kwbOfTGwt5cfMQ0g7rx7t7GAGl5RTZx3j2lF3uIBBNVeLDkswDoQbROaBl7soNYCxUNZiTJ3YkrWJGonnLZx6cTymSDioMEZe290x6Sw13yIxSjiyby7WBRqmrA4hdKnI0uL0L48Uhn2695dm8VK7XPqJpWWEDpzHkZrInkPg3faTyIGQJqIG" target="_blank" rel="noreferrer">Get notified of our future sales</a></div>
     </footer>
   )
 }

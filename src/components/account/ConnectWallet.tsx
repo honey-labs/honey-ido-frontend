@@ -31,12 +31,12 @@ export const ConnectWallet: React.FC<ConnectWalletProps> = ({
   return (
     <button
       className={classNames(
-        'h-10 px-4 text-sm font-bold rounded-xl border flex flex-row items-center justify-center',
-        'outline-none focus:outline-none hover:text-white',
+        'h-10 px-4 text-magenta2 font-bold rounded-xl border flex flex-row items-center justify-center',
+        'outline-none focus:outline-none hover:text-white background:#191a27',
         'shadow-outerButton custom-button-active-effect',
         {
-          'text-brandPrimary hover:bg-brandPrimaryHover': !connected,
-          'text-failure hover:bg-failureHover': connected,
+          'text-brandPrimary hover:bg-magenta2': !connected,
+          'text-failure hover:bg-magenta2': connected,
         },
         className
       )}

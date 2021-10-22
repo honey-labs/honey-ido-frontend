@@ -151,7 +151,7 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
             alt=""
             width="20"
             height="20"
-            src="/icons/prt.svg"
+            src="/icons/logo.png"
             className="mr-2"
           />
           <NumberText
@@ -168,7 +168,7 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
         disabled={disableSubmit}
         isLoading={submitting}
       >
-        {submitting ? 'Waiting approval' : 'Redeem PRT'}
+        {submitting ? 'Waiting approval' : 'Redeem AURY'}
       </Button>
     </div>
   )

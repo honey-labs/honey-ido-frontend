@@ -13,72 +13,57 @@ export const IDO_STARTS = moment(process.env.NEXT_PUBLIC_IDO_START)
 
 export const RPC_ENDPOINTS: WalletEndpoint[] = [
   {
-    id: 'parrot2',
+    id: 'mainnet-1',
     network: 'mainnet-beta' as web3.Cluster,
-    rpcURL: 'https://lokidfxnwlabdq.main.genesysgo.net:8899/',
-    rpcName: 'GenesysGo RPC',
+    rpcURL: 'https://aurory.genesysgo.net',
+    rpcName: 'GenesysGo',
     commitment: 'processed' as web3.Commitment,
   },
   {
-    id: 'parrot',
+    id: 'mainnet-2',
     network: 'mainnet-beta' as web3.Cluster,
-    rpcURL: 'https://parrot.rpcpool.com',
+    rpcURL: 'https://aurory.rpcpool.com',
     rpcName: 'Triton RPC',
-    commitment: 'processed' as web3.Commitment,
-  },
-  {
-    id: 'serum',
-    network: 'mainnet-beta' as web3.Cluster,
-    rpcURL: 'https://solana-api.projectserum.com',
-    rpcName: 'Serum RPC',
     commitment: 'processed' as web3.Commitment,
   },
   {
     id: 'custom',
     network: 'mainnet-beta' as web3.Cluster,
-    rpcURL: '',
+    rpcURL: 'https://api.mainnet-beta.solana.com',
     rpcName: 'Custom RPC',
     commitment: 'processed' as web3.Commitment,
-  },
-  // {
-  //   id: 'devnet',
-  //   network: 'devnet' as web3.Cluster,
-  //   rpcURL: 'https://api.devnet.solana.com',
-  //   rpcName: 'Solana Devnet',
-  //   commitment: 'processed' as web3.Commitment,
-  // },
+  }
 ]
 
 export const IDO_RESULTS = {
-  '5JGWQPf6zLhuxL4bXa8aWKPxakqVJMWbMf9TBaVWfpXD': {
-    contributed: 69229456.78,
-    allocation: new BigNumber(2.1).multipliedBy(0.8).multipliedBy(10 ** 9),
-  },
-  '9U8xzksWyGkKCAdf4yS49VftTKXk5sSurJn8xF1hcdqd': {
-    contributed: 15544369.99,
-    allocation: new BigNumber(2.1).multipliedBy(0.2).multipliedBy(10 ** 9),
-  },
+  '9MVRpLe86ssuqjfv1KakKz6mt4ndZsnv5g7og2PSq6zh': {}
 }
 
 export const IDO_ENDPOINTS = [
   {
     network: 'mainnet-beta' as web3.Cluster,
-    programId: '7r2chJLUU87eaM7T1aBi6f7g9BbtbgnwQ9kPbMGxJQWV',
+    programId: 'BA1EoUw16zzKEq4HiGzthphLMNnKEnL17QYabAmTXocX',
     usdcMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     pools: [
-      '5JGWQPf6zLhuxL4bXa8aWKPxakqVJMWbMf9TBaVWfpXD', //Round 1
-      '9U8xzksWyGkKCAdf4yS49VftTKXk5sSurJn8xF1hcdqd', //Round 2
+      '9MVRpLe86ssuqjfv1KakKz6mt4ndZsnv5g7og2PSq6zh'
     ],
-  },
-  {
-    network: 'devnet' as web3.Cluster,
-    programId: '5s48HdiM1PjxqHDpGvZUVnX6eKbGbvN15rFHJ7RwxCv4',
-    usdcMint: 'G1Z261S3B2XQWCZo1qXJkEbeqkrcY1mVW3B3vMj5uqRq',
-    pools: [
-      '3ah8jT2jkHb3vhKGSxNK4Dm1XDY842vmJaTG8YaFtdyB',
-      '4qkLCR7JrkLCqfJ8iPKTBHGSsqvbY2EjVNeHx9iTdDSR',
-    ],
-  },
+  }
+  // {
+  //   network: 'devnet' as web3.Cluster,
+  //   programId: '7EYV5r3K4efZXrPynWzidc5KTFTKjCtaQcpLV998zniF',
+  //   usdcMint: '7GMQXhBQFmsbZs5P6g8SBdpfLJggwgLtydXtRWLtH2vU',
+  //   pools: [
+  //     'J1nASk9aWGe9cnUCm3MS5hFmsZC8tuSn7DjZAHPRSQBb'
+  //   ],
+  // },
 ]
 
-export const DEFAULT_RPC = RPC_ENDPOINTS.find((i) => i.id === 'parrot2')
+let defaultNode = undefined
+
+export const DEFAULT_RPC = RPC_ENDPOINTS.find((i) => {
+  const r = i.id === `mainnet-1`
+  return r
+})
+
+
+export const RANDOM_DEFAULT_RPC_INDEXES = [0, 1]

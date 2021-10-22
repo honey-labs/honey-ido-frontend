@@ -29,7 +29,7 @@ const StatsCard: React.FC<StatsCardProps> = ({
     tooltip: tooltipSale,
     tooltipVisible: tooltipSaleVisible,
   } = useTooltip(
-    `In the first 12 hours, you may deposit or withdraw your USDC from the vault. During the sale period, the PRT price can fluctuate.`,
+    `In the first 48 hours, you may deposit or withdraw your USDC from the vault. During the sale period, the AURY price can fluctuate.`,
     {
       placement: 'bottom-start',
       trigger: 'hover',
@@ -41,7 +41,7 @@ const StatsCard: React.FC<StatsCardProps> = ({
     tooltip: tooltipGrace,
     tooltipVisible: tooltipGraceVisible,
   } = useTooltip(
-    `After 12 hours, deposits will be restricted and only withdrawals allowed. During the grace period, the PRT price can only go down.`,
+    `After 48 hours, deposits will be restricted and only withdrawals allowed. During the grace period, the AURY price can only go down.`,
     {
       placement: 'bottom-start',
       trigger: 'hover',
@@ -116,9 +116,9 @@ const StatsCard: React.FC<StatsCardProps> = ({
         </div>
       </div>
       <div className="bg-secondary rounded-xl p-6 text-center">
-        <p className="text-sm text-secondary">PRT For Sale</p>
+        <p className="text-sm text-secondary">AURY For Sale</p>
         <div className="flex items-center justify-center pt-2">
-          <img className="h-5 mr-2 w-auto" src="/icons/prt.svg" alt="mango" />
+          <img className="h-5 mr-2 w-auto" src="/icons/logo.png" alt="aurory" />
           <NumberText
             className="font-bold text-mdx"
             value={vaultPrtBalance}

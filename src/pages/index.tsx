@@ -12,6 +12,7 @@ import { IDO_STARTS } from '../config/constants'
 import { useIDO } from '../hooks/useIDO'
 import { useRefresh } from '../hooks/useRefresh'
 import useWalletStore from '../stores/useWalletStore'
+import SecPopup from '../components/SecPopup'
 
 const Main = () => {
   const pools = useWalletStore((s) => s.pools)
@@ -23,7 +24,7 @@ const Main = () => {
   }, [endpoint.rpcURL, loadIDO])
 
   return (
-    <main className="w-full flex flex-col items-center md:items-start justify-center my-4 space-y-4 sm:my-6 md:space-x-6 md:flex-row md:space-y-0">
+    <main className="w-full flex flex-col items-center md:items-start justify-center my-4 space-y-4 sm:my-6 md:space-x-6 md:flex-row md:space-y-0 pb:6rem">
       {pools.map((pool, index) => (
         <PoolCard
           key={pool.publicKey.toBase58()}
@@ -58,19 +59,19 @@ const Page: React.FC = () => {
       <Header />
       <div className="w-full flex justify-center items-center overflow-hidden">
         <img
-          className="max-w-none hidden sm:block"
-          width={1440}
-          height={500}
-          src={isStarted ? '/images/bg/d1.png' : '/images/bg/d2.png'}
+          className="hidden sm:block"
+          width={'auto'}
+          height={'25rem'}
+          src={'/images/bg/ido_header.png'}
         />
         <img
-          className="max-w-none block sm:hidden"
+          className="max-w-none block sm:hidden mt:5rem"
           width={375}
           height={415}
-          src={isStarted ? '/images/bg/m1.png' : '/images/bg/m2.png'}
+          src={'/images/bg/ido_header.png'}
         />
       </div>
-      <div className="-mt-24 sm:-mt-32">
+      <div>
         {!isStarted && (
           <BigCountdown date={IDO_STARTS} onComplete={doForceRefresh} />
         )}

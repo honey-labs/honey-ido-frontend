@@ -5,18 +5,18 @@ export const Logo: React.FC = () => {
     <>
       <div className="select-none hidden dark:block">
         <img
-          src="/icons/parrot-logo-d.svg"
-          alt="Parrot"
-          width="152"
-          height="40"
+          src="/icons/logo.png"
+          alt="Aurory"
+          width="50"
+          height="50"
         />
       </div>
       <div className="select-none dark:hidden">
         <img
-          src="/icons/parrot-logo.svg"
-          alt="Parrot"
-          width="152"
-          height="40"
+          src="/icons/logo.png"
+          alt="Aurory"
+          width="50"
+          height="50"
         />
       </div>
     </>

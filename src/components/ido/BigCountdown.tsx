@@ -16,7 +16,7 @@ const CountdownBlock: React.FC<CountdownBlockProps> = ({
   return (
     <>
       <div className="bg-tertiary flex flex-col items-center w-14 sm:w-100 pt-4 rounded-xl overflow-hidden">
-        <div className="text-brandPrimary text-lg sm:text-xxl text-center font-bold">
+        <div className="text-magenta2 text-lg sm:text-xxl text-center font-bold">
           {count}
         </div>
         <div className="text-xxs sm:text-md text-center bg-white py-2 w-full mt-2 sm:mt-4">
@@ -24,7 +24,7 @@ const CountdownBlock: React.FC<CountdownBlockProps> = ({
         </div>
       </div>
       {!isLast && (
-        <div className="text-brandPrimary text-lg sm:text-xxl px-2 sm:px-4 mb-6 font-bold sm:mb-12">
+        <div className="text-magenta2 text-lg sm:text-xxl px-2 sm:px-4 mb-6 font-bold sm:mb-12">
           :
         </div>
       )}
