@@ -15,8 +15,8 @@ const baseColors = {
   gray: 'var(--color-gray)',
   lightgray: 'var(--color-lightgray)',
   transparent: 'transparent',
-  magenta: '#80287f',
-  magenta2: '#f33bed'
+  magenta: '#750977',
+  magenta2: '#f33bed',
 }
 
 module.exports = {

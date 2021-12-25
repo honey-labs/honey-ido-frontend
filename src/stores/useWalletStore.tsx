@@ -85,9 +85,8 @@ const useWalletStore = create<WalletStore>((set, get) => ({
   mints: {},
   actions: {
     connectRpc(endpoint: WalletEndpoint) {
-      const idoConfig = IDO_ENDPOINTS.find(
-        (i) => i.network === endpoint.network
-      )
+      const idoConfig = IDO_ENDPOINTS[0]
+      console.log(idoConfig)
       set((state) => {
         state.programId = new web3.PublicKey(idoConfig.programId)
         state.usdcMint = new web3.PublicKey(idoConfig.usdcMint)
@@ -370,7 +369,7 @@ const useWalletStore = create<WalletStore>((set, get) => ({
         wallet,
         connection,
         sendingMessage: 'Sending redeem transaction...',
-        successMessage: 'AURY redeemed successfully!',
+        successMessage: 'SHDW redeemed successfully!',
       })
       await actions.fetchWalletTokenAccounts()
     },

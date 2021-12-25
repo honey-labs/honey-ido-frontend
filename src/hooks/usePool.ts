@@ -23,9 +23,9 @@ export default function usePool(pool: PoolAccount) {
   // const startRedeem = moment.unix(unixTs).add(90, 'seconds')
 
   const poolStatus =
-    endDeposits?.isBefore() && endIdo?.isAfter()
+    endDeposits?.isBefore() && startRedeem?.isAfter()
       ? 'Deposits are closed'
-      : endIdo?.isBefore()
+      : startRedeem?.isBefore()
       ? 'The IDO has ended'
       : 'The IDO is starting...'
 

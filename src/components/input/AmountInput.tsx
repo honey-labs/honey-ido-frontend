@@ -37,6 +37,7 @@ type AmountInputProps = {
   valueRound: 'floor' | 'ceil'
   maxLabel?: string
   maxValue?: string
+  depositedBalance?: string
   maxPercentage?: number
   maxIsLoading?: boolean
   maxIsRefreshing?: boolean
@@ -57,6 +58,7 @@ export const AmountInput: React.FC<AmountInputProps> = ({
   title,
   maxLabel,
   maxValue,
+  depositedBalance,
   maxPercentage = 100,
   maxIsLoading,
   maxIsRefreshing,
@@ -198,10 +200,12 @@ export const AmountInput: React.FC<AmountInputProps> = ({
         {hasError && <span className="text-xs text-error">{errorMessage}</span>}
         <span className="flex-1" />
         <button
-          className="text-xs text-secondary outline-none focus:outline-none"
+          className="text-xs text-secondary outline-none focus:outline-none text-left"
           onClick={handleSelectMax}
         >
-          {maxLabel} {maxIsLoading ? '' : maxValue}
+          {maxLabel} {maxIsLoading ? '' : Number(maxValue).toLocaleString()}
+          <br />
+          Deposited: {Number(depositedBalance).toLocaleString()}
         </button>
         {maxIsLoading && <Spinner className="mx-1" size="sm" />}
         {onRefreshMax && (

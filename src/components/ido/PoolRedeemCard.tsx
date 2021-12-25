@@ -26,13 +26,32 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
   const [submitting, setSubmitting] = useState(false)
   const [loading, setLoading] = useState(true)
 
+  const WATERMELON_TOTAL = 30_000_000
+
   const contributeBalance = largestAccounts.redeemable?.balance || 0
+
+  const realTokenPrice = new BigNumber(usdcBalance / 30000000)
 
   const redeemablePrtAmount = useMemo(() => {
     const redeemableSupply = calculateSupply(mints, pool.redeemableMint)
-    return prtBalance && redeemableSupply
-      ? (contributeBalance * prtBalance) / redeemableSupply
-      : 0
+    console.log('prt balance', prtBalance)
+    console.log('usdcBalance', usdcBalance)
+    console.log('redeemableSupply', redeemableSupply)
+    console.log('contributeBalance', contributeBalance)
+    const basePrice = new BigNumber(0.5)
+    console.log('realTokenPrice', realTokenPrice.toString())
+    if (realTokenPrice < new BigNumber(0.5)) {
+      const tokenMultiple = realTokenPrice.dividedBy(basePrice)
+      console.log('tokenMultiple', tokenMultiple.toString())
+      return prtBalance && redeemableSupply
+        ? ((contributeBalance * WATERMELON_TOTAL) / usdcBalance) *
+            Number(tokenMultiple.toString())
+        : 0
+    } else {
+      return prtBalance && redeemableSupply
+        ? (contributeBalance * prtBalance) / redeemableSupply
+        : 0
+    }
   }, [prtBalance, contributeBalance, mints, pool.redeemableMint])
 
   const handleRedeem = useCallback(() => {
@@ -73,9 +92,16 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
   }, [submitting])
 
   const idoResult = IDO_RESULTS[pool.publicKey.toBase58()]
-  const estimatedPrice = new BigNumber(
-    idoResult?.contributed || usdcBalance
-  ).dividedBy(idoResult?.allocation || prtBalance)
+  const estimatedPrice = useMemo(() => {
+    if (realTokenPrice >= new BigNumber(0.5)) {
+      return realTokenPrice
+    } else {
+      return new BigNumber(0.5)
+    }
+  }, [usdcBalance, prtBalance])
+  // const estimatedPrice = new BigNumber(
+  //   idoResult?.contributed || usdcBalance
+  // ).dividedBy(idoResult?.allocation || prtBalance)
 
   const disableSubmit =
     !connected || loading || redeemablePrtAmount <= 0 || startRedeem.isAfter()
@@ -123,7 +149,7 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
             className="font-bold text-mdx"
             value={estimatedPrice}
             defaultIfNull="N/A"
-            displayDecimals={6}
+            displayDecimals={9}
           />
         </div>
       </div>
@@ -157,7 +183,7 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
           <NumberText
             className="font-bold text-mdx"
             value={redeemablePrtAmount}
-            displayDecimals={6}
+            displayDecimals={9}
             defaultIfNull="N/A"
           />
         </div>
@@ -168,7 +194,7 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
         disabled={disableSubmit}
         isLoading={submitting}
       >
-        {submitting ? 'Waiting approval' : 'Redeem AURY'}
+        {submitting ? 'Waiting approval' : 'Redeem SHDW'}
       </Button>
     </div>
   )

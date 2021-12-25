@@ -29,7 +29,7 @@ const StatsCard: React.FC<StatsCardProps> = ({
     tooltip: tooltipSale,
     tooltipVisible: tooltipSaleVisible,
   } = useTooltip(
-    `In the first 48 hours, you may deposit or withdraw your USDC from the vault. During the sale period, the AURY price can fluctuate.`,
+    `In the first 48 hours, you may deposit your USDC into the vault. During the sale period, the SHDW price can fluctuate.`,
     {
       placement: 'bottom-start',
       trigger: 'hover',
@@ -41,7 +41,7 @@ const StatsCard: React.FC<StatsCardProps> = ({
     tooltip: tooltipGrace,
     tooltipVisible: tooltipGraceVisible,
   } = useTooltip(
-    `After 48 hours, deposits will be restricted and only withdrawals allowed. During the grace period, the AURY price can only go down.`,
+    `After 48 hours, deposits will be restricted and only withdrawals allowed. During the grace period, the SHDW price can only go down.`,
     {
       placement: 'bottom-start',
       trigger: 'hover',
@@ -50,7 +50,7 @@ const StatsCard: React.FC<StatsCardProps> = ({
 
   return (
     <div className="flex flex-col space-y-2">
-      <div className="bg-secondary rounded-xl p-6 grid grid-cols-2 gap-2">
+      <div className="bg-secondary rounded-xl p-6 flex items-center justify-center">
         <div>
           <div className="text-sm text-secondary flex flex-row items-center justify-center">
             <span className="mr-1">Sale Period Ends</span>
@@ -65,7 +65,7 @@ const StatsCard: React.FC<StatsCardProps> = ({
             className="justify-center pt-2"
           />
         </div>
-        <div>
+        {/* <div>
           <div className="text-sm text-secondary flex flex-row items-center justify-center">
             <span className="mr-1">Grace Period Ends</span>
             <span ref={targetGraceRef}>
@@ -78,7 +78,7 @@ const StatsCard: React.FC<StatsCardProps> = ({
             date={endIdo}
             className="justify-center pt-2"
           />
-        </div>
+        </div> */}
       </div>
       <div className="bg-secondary rounded-xl p-6 text-center">
         <p className="text-sm text-secondary">USDC Contributed</p>
@@ -111,18 +111,23 @@ const StatsCard: React.FC<StatsCardProps> = ({
             className="font-bold text-mdx"
             value={estimatedPrice}
             defaultIfNull="N/A"
-            displayDecimals={6}
+            displayDecimals={9}
           />
         </div>
       </div>
       <div className="bg-secondary rounded-xl p-6 text-center">
-        <p className="text-sm text-secondary">AURY For Sale</p>
+        <p className="text-sm text-secondary">SHDW For Sale</p>
         <div className="flex items-center justify-center pt-2">
-          <img className="h-5 mr-2 w-auto" src="/icons/logo.png" alt="aurory" />
+          <img
+            className="h-5 mr-2 w-auto"
+            src="/icons/logo.png"
+            alt="Genesys Go"
+          />
           <NumberText
             className="font-bold text-mdx"
             value={vaultPrtBalance}
             defaultIfNull="N/A"
+            displayDecimals={9}
           />
         </div>
       </div>

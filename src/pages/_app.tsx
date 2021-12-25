@@ -7,7 +7,6 @@ import Head from 'next/head'
 import { ThemeProvider } from 'next-themes'
 import React from 'react'
 
-import ScriptAnalytics from '../components/ScriptAnalytics'
 import Ido from './ido'
 
 BigNumber.config({
@@ -16,17 +15,34 @@ BigNumber.config({
 })
 
 function MyApp({ Component, pageProps }) {
-  const title = 'Aurory IDO'
+  const title = 'Genesys Go IDO'
   const description =
-    'This is the IDO (initial DEX offering) page for Aurory, a P2E game on Solana!'
-  const keywords = 'Aurory, AURY, IDO, P2E, Solana, play2earn'
-  const baseUrl = 'https://ido.aurory.io'
+    'This is the IDO (initial DEX offering) page for Genesys Go.'
+  const keywords = 'Genesys Go, Shadowy Super Coder Dao, SSC DAO, SSC, Solana'
+  const baseUrl = 'https://ido.genesysgo.net'
 
   return (
     <>
       <Head>
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="keywords" content={keywords} />
         <meta name="description" content={description} />
@@ -39,11 +55,10 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:description" content={description} />
         <meta property="og:image" content={`${baseUrl}/images/logo.png`} />
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="@auroryproject" />
+        <meta name="twitter:site" content="@genesysgo" />
       </Head>
       <ThemeProvider defaultTheme="dark" attribute="class">
         <Ido Component={Component} pageProps={pageProps} />
-        <ScriptAnalytics analyticsID="G-H88T6Y0N85" />
       </ThemeProvider>
     </>
   )

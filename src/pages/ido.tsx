@@ -1,9 +1,9 @@
 import { WalletProvider } from '@parrotfi/wallets'
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
-import SecPopup from '../components/SecPopup'
 import Notifications from '../components/Notifications'
-import { RPC_ENDPOINTS, RANDOM_DEFAULT_RPC_INDEXES } from '../config/constants'
+import SecPopup from '../components/SecPopup'
+import { RANDOM_DEFAULT_RPC_INDEXES, RPC_ENDPOINTS } from '../config/constants'
 import { IDOProvider } from '../contexts/IDOContext'
 import { ModalProvider } from '../contexts/ModalContext'
 import { RefreshProvider } from '../contexts/RefreshContext'
@@ -13,32 +13,31 @@ let choosenRPC = null
 function Ido({ Component, pageProps }) {
   const [showPopup, setShowPopup] = useState(true)
   if (choosenRPC == null) {
-    const choosenIndex = Math.floor(Math.random() * RANDOM_DEFAULT_RPC_INDEXES.length)
+    const choosenIndex = Math.floor(
+      Math.random() * RANDOM_DEFAULT_RPC_INDEXES.length
+    )
     choosenRPC = RPC_ENDPOINTS[RANDOM_DEFAULT_RPC_INDEXES[choosenIndex]]
   }
   const togglePopup = (_) => {
     setShowPopup(false)
   }
-  if (showPopup)
+  if (showPopup) return <SecPopup popupCallback={togglePopup} />
   return (
-    <SecPopup popupCallback={togglePopup} />
-  )
-  return (
-      <WalletProvider
-        endpoints={RPC_ENDPOINTS}
-        defaultEndpoint={choosenRPC}
-        onNotify={notify}
-      >
-          <ModalProvider>
-            <IDOProvider>
-              <RefreshProvider>
-                <Component {...pageProps} />
-              </RefreshProvider>
-              <Notifications />
-              <div id="tooltip-portal-root" />
-            </IDOProvider>
-          </ModalProvider>
-      </WalletProvider>
+    <WalletProvider
+      endpoints={RPC_ENDPOINTS}
+      defaultEndpoint={choosenRPC}
+      onNotify={notify}
+    >
+      <ModalProvider>
+        <IDOProvider>
+          <RefreshProvider>
+            <Component {...pageProps} />
+          </RefreshProvider>
+          <Notifications />
+          <div id="tooltip-portal-root" />
+        </IDOProvider>
+      </ModalProvider>
+    </WalletProvider>
   )
 }
 

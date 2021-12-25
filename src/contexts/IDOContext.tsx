@@ -67,6 +67,7 @@ export const IDOProvider = ({ children }) => {
       setLoadingIDO(false)
       await actions.fetchMints()
     } catch (e) {
+      console.error(e)
       setLoadingError(e.message)
       notify({
         type: 'error',

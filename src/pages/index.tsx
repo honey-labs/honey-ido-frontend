@@ -7,12 +7,13 @@ import { Footer } from '../components/footer'
 import { Header } from '../components/header'
 import BigCountdown from '../components/ido/BigCountdown'
 import CardBase from '../components/ido/CardBase'
+import FAQs from '../components/ido/Faqs'
 import PoolCard from '../components/ido/PoolCard'
+import SecPopup from '../components/SecPopup'
 import { IDO_STARTS } from '../config/constants'
 import { useIDO } from '../hooks/useIDO'
 import { useRefresh } from '../hooks/useRefresh'
 import useWalletStore from '../stores/useWalletStore'
-import SecPopup from '../components/SecPopup'
 
 const Main = () => {
   const pools = useWalletStore((s) => s.pools)
@@ -57,18 +58,19 @@ const Page: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col bg-scaffold">
       <Header />
-      <div className="w-full flex justify-center items-center overflow-hidden">
+      <div className="w-full flex justify-center items-center overflow-hidden pt-4">
         <img
           className="hidden sm:block"
           width={'auto'}
-          height={'25rem'}
-          src={'/images/bg/ido_header.png'}
+          height={'10rem'}
+          style={{ height: '20rem' }}
+          src={'/images/GEN_FOR_DARK_BG_PNG.png'}
         />
         <img
           className="max-w-none block sm:hidden mt:5rem"
           width={375}
           height={415}
-          src={'/images/bg/ido_header.png'}
+          src={'/images/GEN_FOR_DARK_BG_PNG.png'}
         />
       </div>
       <div>
@@ -78,6 +80,7 @@ const Page: React.FC = () => {
         {isStarted && <Main />}
       </div>
       <Footer />
+      <FAQs />
     </div>
   )
 }

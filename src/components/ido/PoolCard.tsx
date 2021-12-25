@@ -15,11 +15,11 @@ const PoolCard: React.FC<PoolCardProps> = ({ pool, round }) => {
   const { startIdo, endIdo, startRedeem, endDeposits } = usePool(pool)
 
   return (
-    <CardOverlay title={`IDO Aurory`} pool={pool}>
+    <CardOverlay title={`IDO SHDW`} pool={pool}>
       {endIdo.isAfter() && <PoolContribCard pool={pool} />}
       {endIdo.isBefore() && <PoolRedeemCard pool={pool} />}
       {/* Debug stats */}
-      <div className="hidden bg-secondary rounded-xl p-2 mt-4 space-y-3 font-mono text-xs">
+      {/* <div className="hidden bg-secondary rounded-xl p-2 mt-4 space-y-3 font-mono text-xs">
         <p>
           Start Ido: {startIdo?.fromNow()} ({startIdo?.format()})
         </p>
@@ -32,7 +32,7 @@ const PoolCard: React.FC<PoolCardProps> = ({ pool, round }) => {
         <p>
           Start Redeem: {startRedeem?.fromNow()} ({startRedeem?.format()})
         </p>
-      </div>
+      </div> */}
     </CardOverlay>
   )
 }

@@ -3,7 +3,7 @@ import React, { Children, cloneElement, ReactElement } from 'react'
 export interface ButtonMenuProps {
   activeIndex?: number
   onItemClick?: (index: number) => void
-  children: React.ReactElement[]
+  children: React.ReactElement
 }
 
 const ButtonMenu: React.FC<ButtonMenuProps> = ({
