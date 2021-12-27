@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }) {
   const description =
     'This is the IDO (initial DEX offering) page for Genesys Go.'
   const keywords = 'Genesys Go, Shadowy Super Coder Dao, SSC DAO, SSC, Solana'
-  const baseUrl = 'https://ido.genesysgo.net'
+  const baseUrl = 'https://ido.genesysgo.com'
 
   return (
     <>

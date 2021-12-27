@@ -17,19 +17,19 @@ const SecPopup = ({ popupCallback }) => {
             Legal notice
           </a>
           ,{' '}
-          <a
+          {/* <a
             className="text-inputSecondary"
             rel="noreferrer"
             href="https://genesysgo.net"
             target="_blank"
           >
             Shadow litepaper
-          </a>{' '}
+          </a>{' '} */}
           and other informational materials about the{' '}
           <a
             className="text-inputSecondary"
             rel="noreferrer"
-            href="https://genesysgo.net"
+            href="https://genesysgo.medium.com/the-comprehensive-guide-to-genesysgo-and-the-shdw-ido-278b90d3186c"
             target="_blank"
           >
             operation of this IDO
