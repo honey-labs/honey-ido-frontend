@@ -56,6 +56,15 @@ const faqs = [
       </>
     ),
   },
+  {
+    question: `Where do I need to start accruing my USDC?`,
+    answer: `Your Phantom wallet! Phantom's code is battle tested and we love the focus they have on protecting their uses. So, you'll just be connecting your Phantom wallet to the IDO site. Ez pz!`,
+  },
+  {
+    question: `Can I participate in the IDO even if I don't have a SSC NFT?`,
+    answer:
+      'Of course! The IDO is not tied to owning a Shadowy Super Coder NFT.',
+  },
 ]
 
 function classNames(...classes) {
