@@ -1,12 +1,14 @@
-import BigNumber from 'bignumber.js'
-import * as Fathom from 'fathom-client'
-import { ThemeProvider } from 'next-themes'
-import Head from 'next/head'
-import { useRouter } from 'next/router'
-import React, { useEffect } from 'react'
 import '../components/toast/toast.scss'
 import '../components/tooltip/tooltip.scss'
 import '../styles/global.scss'
+
+import BigNumber from 'bignumber.js'
+import * as Fathom from 'fathom-client'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import { ThemeProvider } from 'next-themes'
+import React, { useEffect } from 'react'
+
 import Ido from './ido'
 
 BigNumber.config({

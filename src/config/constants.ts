@@ -37,10 +37,8 @@ export const IDO_ENDPOINTS = [
     network: 'mainnet-beta',
     programId: 'BRkhzczJALNLNbaYtLiuo4yQi6i33fQDt3z1wiujyKU4',
     usdcMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
-    pools: [
-      '9KLppKiDcTiaonj55PmwiZCDU62R6JFz1uPEc26wXB5J'
-    ],
-  }
+    pools: ['9KLppKiDcTiaonj55PmwiZCDU62R6JFz1uPEc26wXB5J'],
+  },
   // {
   //   network: 'devnet',
   //   programId: '9NN9Wux6ZRg9mhrh9wRFfuDRCsN77C2dp3KrkFDcip8B',
