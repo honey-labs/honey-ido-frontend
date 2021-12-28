@@ -14,7 +14,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html prefix="og: http://ogp.me/ns#">
         <Head />
         <body className="dark">
           <Main />

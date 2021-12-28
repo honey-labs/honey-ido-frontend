@@ -74,9 +74,12 @@ function MyApp({ Component, pageProps }) {
         <meta name="theme-color" content="#ffffff" />
 
         <meta property="og:type" content="website" />
+        
         <meta property="og:title" content={title} />
+        <meta property="og:url" content="https://ido.genesysgo.com/" />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={`${baseUrl}/images/gg-single.png`} />
+        <meta property="og:image:type" content="image/png" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@genesysgo" />
       </Head>
