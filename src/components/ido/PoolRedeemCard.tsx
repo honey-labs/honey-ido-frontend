@@ -34,15 +34,15 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
 
   const redeemablePrtAmount = useMemo(() => {
     const redeemableSupply = calculateSupply(mints, pool.redeemableMint)
-    console.log('prt balance', prtBalance)
-    console.log('usdcBalance', usdcBalance)
-    console.log('redeemableSupply', redeemableSupply)
-    console.log('contributeBalance', contributeBalance)
+    // console.log('prt balance', prtBalance)
+    // console.log('usdcBalance', usdcBalance)
+    // console.log('redeemableSupply', redeemableSupply)
+    // console.log('contributeBalance', contributeBalance)
     const basePrice = new BigNumber(0.5)
-    console.log('realTokenPrice', realTokenPrice.toString())
+    // console.log('realTokenPrice', realTokenPrice.toString())
     if (realTokenPrice < new BigNumber(0.5)) {
       const tokenMultiple = realTokenPrice.dividedBy(basePrice)
-      console.log('tokenMultiple', tokenMultiple.toString())
+      // console.log('tokenMultiple', tokenMultiple.toString())
       return prtBalance && redeemableSupply
         ? ((contributeBalance * WATERMELON_TOTAL) / usdcBalance) *
             Number(tokenMultiple.toString())

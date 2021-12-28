@@ -41,14 +41,7 @@ const SecPopup = ({ popupCallback }) => {
           (III) understood that, despite our best efforts, there can still be
           exploit risks that exist within the app. (Please do not invest more
           than you can afford to lose)
-          <br /> <br />
-          Manipulation can also happen within the actual sale period with{' '}
-          <b>
-            large investors artificially increasing the token&lsquo;s price and
-            withdrawing their funds in the last moments
-          </b>{' '}
-          so bid accordingly. We hope that the sale will meet your expectations
-          and hope you will have a pleasant experience.
+          <br />
         </p>
         <button
           className="align-center mt-8 w-56 h-auto p-4 bg-magenta rounded-lg"

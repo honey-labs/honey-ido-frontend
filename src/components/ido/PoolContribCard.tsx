@@ -166,7 +166,7 @@ const PoolContribCard: React.FC<PoolContribCardProps> = ({ pool }) => {
   )
 
   const handleRefresh = useCallback(async () => {
-    console.log('handleRefresh start')
+    // console.log('handleRefresh start')
 
     setRefreshing(true)
     try {

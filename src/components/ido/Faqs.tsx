@@ -7,6 +7,11 @@ const faqs = [
     answer: 'The IDO begins on January 3rd, 2022 @ 2:00pm UTC',
   },
   {
+    question: 'Will I need SOL in my wallet?',
+    answer:
+      'Yes, you will need SOL in your wallet to pay for transaction fees. If you have a 0 SOL balance but have USDC, your transactions will fail.',
+  },
+  {
     question: 'Will I need USDC?',
     answer: 'Yes, the IDO bids will be placed in USDC',
   },

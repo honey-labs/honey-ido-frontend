@@ -1,12 +1,12 @@
+import BigNumber from 'bignumber.js'
+import * as Fathom from 'fathom-client'
+import { ThemeProvider } from 'next-themes'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import React, { useEffect } from 'react'
 import '../components/toast/toast.scss'
 import '../components/tooltip/tooltip.scss'
 import '../styles/global.scss'
-
-import BigNumber from 'bignumber.js'
-import Head from 'next/head'
-import { ThemeProvider } from 'next-themes'
-import React from 'react'
-
 import Ido from './ido'
 
 BigNumber.config({
@@ -20,6 +20,27 @@ function MyApp({ Component, pageProps }) {
     'This is the IDO (initial DEX offering) page for Genesys Go.'
   const keywords = 'Genesys Go, Shadowy Super Coder Dao, SSC DAO, SSC, Solana'
   const baseUrl = 'https://ido.genesysgo.com'
+
+  const router = useRouter()
+
+  useEffect(() => {
+    // Initialize Fathom when the app loads
+    Fathom.load('OAIHVCMC', {
+      includedDomains: ['ido.genesysgo.com'],
+      url: 'https://principled-nutritious.genesysgo.com',
+    })
+
+    function onRouteChangeComplete() {
+      Fathom.trackPageview()
+    }
+    // Record a pageview when route changes
+    router.events.on('routeChangeComplete', onRouteChangeComplete)
+
+    // Unassign event listener
+    return () => {
+      router.events.off('routeChangeComplete', onRouteChangeComplete)
+    }
+  }, [])
 
   return (
     <>

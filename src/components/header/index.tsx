@@ -12,7 +12,7 @@ export const Header: React.FC = () => {
           <Logo />
         </div>
         <div className="flex flex-row items-center justify-end space-x-2 sm:space-x-4">
-          <RpcSwitcher />
+          {/* <RpcSwitcher /> */}
           <ConnectWallet />
         </div>
       </div>

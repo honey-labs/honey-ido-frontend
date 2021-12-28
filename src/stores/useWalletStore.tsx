@@ -86,7 +86,7 @@ const useWalletStore = create<WalletStore>((set, get) => ({
   actions: {
     connectRpc(endpoint: WalletEndpoint) {
       const idoConfig = IDO_ENDPOINTS[0]
-      console.log(idoConfig)
+      // console.log(idoConfig)
       set((state) => {
         state.programId = new web3.PublicKey(idoConfig.programId)
         state.usdcMint = new web3.PublicKey(idoConfig.usdcMint)
@@ -208,12 +208,12 @@ const useWalletStore = create<WalletStore>((set, get) => ({
       )
 
       const depositAmount = calculateNativeAmountUnsafe(mints, usdcMint, amount)
-      console.log(
-        'submitDepositContribution',
-        amount,
-        depositAmount.toString(),
-        'exchangeUsdcForRedeemable'
-      )
+      // console.log(
+      //   'submitDepositContribution',
+      //   amount,
+      //   depositAmount.toString(),
+      //   'exchangeUsdcForRedeemable'
+      // )
 
       const redeemableAcc = findLargestBalanceAccountForMint(
         mints,
@@ -283,12 +283,12 @@ const useWalletStore = create<WalletStore>((set, get) => ({
         usdcMint,
         amount
       )
-      console.log(
-        'submitDepositContribution',
-        amount,
-        withdrawAmount.toString(),
-        'exchangeRedeemableForUsdc'
-      )
+      // console.log(
+      //   'submitDepositContribution',
+      //   amount,
+      //   withdrawAmount.toString(),
+      //   'exchangeRedeemableForUsdc'
+      // )
       const transaction = new web3.Transaction()
       transaction.add(
         program.instruction.exchangeRedeemableForUsdc(withdrawAmount, {
@@ -325,7 +325,7 @@ const useWalletStore = create<WalletStore>((set, get) => ({
         pool.watermelonMint
       )
 
-      console.log('exchangeRedeemableForMango', redeemable, watermelon)
+      // console.log('exchangeRedeemableForMango', redeemable, watermelon)
 
       const [poolSigner] = await web3.PublicKey.findProgramAddress(
         [pool.watermelonMint.toBuffer()],
