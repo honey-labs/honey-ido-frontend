@@ -80,10 +80,10 @@ export const IDOProvider = ({ children }) => {
 
   // pool loading
   useEffect(() => {
-    if (endpoint.rpcURL) {
+    if (endpoint && endpoint.rpcURL) {
       loadIDO(endpoint)
     }
-  }, [endpoint.rpcURL])
+  }, [endpoint])
 
   useEffect(() => {
     setWalletStore((state) => {

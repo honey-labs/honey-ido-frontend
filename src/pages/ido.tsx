@@ -13,10 +13,7 @@ let choosenRPC = null
 function Ido({ Component, pageProps }) {
   const [showPopup, setShowPopup] = useState(true)
   if (choosenRPC == null) {
-    const choosenIndex = Math.floor(
-      Math.random() * RANDOM_DEFAULT_RPC_INDEXES.length
-    )
-    choosenRPC = RPC_ENDPOINTS[RANDOM_DEFAULT_RPC_INDEXES[choosenIndex]]
+    choosenRPC = RPC_ENDPOINTS[0]
   }
   const togglePopup = (_) => {
     setShowPopup(false)

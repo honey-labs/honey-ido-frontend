@@ -29,7 +29,7 @@ function MyApp({ Component, pageProps }) {
     // Initialize Fathom when the app loads
     Fathom.load('OAIHVCMC', {
       includedDomains: ['ido.genesysgo.com'],
-      url: 'https://principled-nutritious.genesysgo.com',
+      url: 'https://principled-nutritious.genesysgo.com/script.js',
     })
 
     function onRouteChangeComplete() {
@@ -76,7 +76,7 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content={`${baseUrl}/images/logo.png`} />
+        <meta property="og:image" content={`${baseUrl}/images/gg-single.png`} />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@genesysgo" />
       </Head>
