@@ -74,7 +74,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="theme-color" content="#ffffff" />
 
         <meta property="og:type" content="website" />
-        
+
         <meta property="og:title" content={title} />
         <meta property="og:url" content="https://ido.genesysgo.com/" />
         <meta property="og:description" content={description} />
