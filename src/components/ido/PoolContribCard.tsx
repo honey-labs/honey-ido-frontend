@@ -79,7 +79,7 @@ function ConfirmDepositModal({ open, setOpen, depositAmount, submitDeposit }) {
                     as="h3"
                     className="text-lg leading-6 font-medium text-gray-900"
                   >
-                    Confirm IDO deopsit
+                    Confirm IDO deposit
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
