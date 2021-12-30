@@ -23,7 +23,7 @@ For example, to use python's http server:
 
 Then open http://localhost:8899, you should see the IDO UI:
 
-![](./images/ido-ui.png)
+![](./images/ido-ggui.png)
 
 # Development
 
