@@ -92,7 +92,7 @@ const useWalletStore = create<WalletStore>((set, get) => ({
         state.usdcMint = new web3.PublicKey(idoConfig.usdcMint)
         state.poolsPks = idoConfig.pools.map((i) => new web3.PublicKey(i))
         state.connection = new web3.Connection(
-          'https://ssc-dao.genesysgo.net',
+          process.env.NEXT_PUBLIC_RPC_URL,
           {
             commitment: endpoint.commitment,
           }

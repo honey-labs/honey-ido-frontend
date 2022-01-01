@@ -15,7 +15,7 @@ export const RPC_ENDPOINTS: WalletEndpoint[] = [
   {
     id: 'mainnet-beta',
     network: 'mainnet-beta' as web3.Cluster,
-    rpcURL: 'https://ssc-dao.genesysgo.net/',
+    rpcURL: process.env.NEXT_PUBLIC_RPC_URL,
     rpcName: 'Mainnet-beta',
     commitment: 'processed' as web3.Commitment,
   },
