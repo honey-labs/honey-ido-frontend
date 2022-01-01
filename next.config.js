@@ -9,7 +9,7 @@ module.exports = {
     NEXT_PUBLIC_VERSION: process.env.VERSION,
     NEXT_PUBLIC_NETWORK: process.env.NETWORK,
     NEXT_PUBLIC_IDO_START: process.env.IDO_START,
-    NEXT_PUBLIC_RPC_URL: process.env.RPC_URL
+    NEXT_PUBLIC_RPC_URL: process.env.RPC_URL,
   },
   webpack: (config, options) => {
     config.module = {
