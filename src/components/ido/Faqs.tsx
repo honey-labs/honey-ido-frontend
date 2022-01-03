@@ -70,6 +70,38 @@ const faqs = [
     answer:
       'Of course! The IDO is not tied to owning a Shadowy Super Coder NFT.',
   },
+  {
+    question: `My transaction timed out while trying to deposit.`,
+    answer: (
+      <>
+        <p>
+          This can be caused by numerous different factors. The following steps
+          are a good starting point to resolve the issue:
+        </p>
+        <ul>
+          <li>
+            Check that you have SOL in the wallet you&apos;re using. If you do
+            not, try sending around 0.1 SOL to your wallet.
+          </li>
+          <li>
+            Check that you&apos;re using the latest version of
+            Chrome/Brave/Firefox.
+          </li>
+          <li>
+            Try a different network (VPN, connect to a mobile hotspot, etc)
+          </li>
+          <li>
+            Try a different web browser. Example: if using Chrome, try Firefox.
+          </li>
+          <li>Try small test transactions to see if that goes through.</li>
+          <li>
+            Shift your balance to a different wallet and try from that different
+            wallet.
+          </li>
+        </ul>
+      </>
+    ),
+  },
 ]
 
 function classNames(...classes) {
