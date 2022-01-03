@@ -193,8 +193,8 @@ async function awaitTransactionSignatureConfirmation(
           return
         }
         done = true
-        if(typeof window.fathom !== 'undefined') {
-          window.fathom.trackGoal('A7WFPLCR', 0);
+        if (typeof window.fathom !== 'undefined') {
+          window.fathom.trackGoal('A7WFPLCR', 0)
         }
         console.log('Timed out for txid', txid)
         reject({ timeout: true })
