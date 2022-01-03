@@ -8,7 +8,6 @@ import {
   Transaction,
   TransactionSignature,
 } from '@solana/web3.js'
-import { trackGoal } from 'fathom-client'
 
 import { notify } from '../stores/useNotificationStore'
 
@@ -146,7 +145,6 @@ export async function sendSignedTransaction({
     await awaitTransactionSignatureConfirmation(txid, timeout, connection)
   } catch (err) {
     if (err.timeout) {
-      trackGoal('A7WFPLCR', 0);
       throw new Error('Timed out awaiting confirmation on transaction')
     }
     let simulateResult: SimulatedTransactionResponse | null = null
@@ -195,6 +193,9 @@ async function awaitTransactionSignatureConfirmation(
           return
         }
         done = true
+        if(typeof window.fathom !== 'undefined') {
+          window.fathom.trackGoal('A7WFPLCR', 0);
+        }
         console.log('Timed out for txid', txid)
         reject({ timeout: true })
       }, timeout)
