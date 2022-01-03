@@ -40,13 +40,10 @@ const StatsCard: React.FC<StatsCardProps> = ({
     targetRef: targetGraceRef,
     tooltip: tooltipGrace,
     tooltipVisible: tooltipGraceVisible,
-  } = useTooltip(
-    `After 24 hours, deposits will be restricted.`,
-    {
-      placement: 'bottom-start',
-      trigger: 'hover',
-    }
-  )
+  } = useTooltip(`After 24 hours, deposits will be restricted.`, {
+    placement: 'bottom-start',
+    trigger: 'hover',
+  })
 
   return (
     <div className="flex flex-col space-y-2">
