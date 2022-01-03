@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     question: 'Will I need USDC?',
-    answer: 'Yes, the IDO bids will be placed in USDC',
+    answer: 'Yes, the IDO deposits will be placed in USDC',
   },
   {
     question: 'Where will the token be listed post-IDO?',
@@ -42,13 +42,13 @@ const faqs = [
         </p>
         <br />
         <p>
-          Step #4 - Wait until the bidding phase of the IDO expires. The bidding
+          Step #4 - Wait until the deposit phase of the IDO expires. The deposit
           phase opens on Jan 3rd at 2pm UTC and will last for 24 hours in order
           to ensure people from all time zones are able to participate.
         </p>
         <br />
         <p>
-          Step #5 - After the bidding phase has expired, you can return to the
+          Step #5 - After the deposit phase has expired, you can return to the
           IDO page and collect your $SHDW token! The redemption phase will last
           for as long as there are outstanding $SHDW tokens needing to be
           redeemed.
