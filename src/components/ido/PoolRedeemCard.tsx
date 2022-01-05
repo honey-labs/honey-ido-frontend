@@ -30,7 +30,7 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
 
   const contributeBalance = largestAccounts.redeemable?.balance || 0
 
-  const realTokenPrice = new BigNumber(usdcBalance / 30000000)
+  const realTokenPrice = new BigNumber(1.734398352)
 
   const redeemablePrtAmount = useMemo(() => {
     const redeemableSupply = calculateSupply(mints, pool.redeemableMint)
@@ -39,6 +39,9 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
     // console.log('redeemableSupply', redeemableSupply)
     // console.log('contributeBalance', contributeBalance)
     const basePrice = new BigNumber(0.5)
+    return prtBalance && redeemableSupply
+      ? (contributeBalance * prtBalance) / redeemableSupply
+      : 0
     // console.log('realTokenPrice', realTokenPrice.toString())
     if (realTokenPrice < new BigNumber(0.5)) {
       const tokenMultiple = realTokenPrice.dividedBy(basePrice)
@@ -91,14 +94,14 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
     }
   }, [submitting])
 
-  const idoResult = IDO_RESULTS[pool.publicKey.toBase58()]
-  const estimatedPrice = useMemo(() => {
-    if (realTokenPrice >= new BigNumber(0.5)) {
-      return realTokenPrice
-    } else {
-      return new BigNumber(0.5)
-    }
-  }, [usdcBalance, prtBalance])
+  // const idoResult = IDO_RESULTS[pool.publicKey.toBase58()]
+  // const estimatedPrice = useMemo(() => {
+  //   if (realTokenPrice >= new BigNumber(0.5)) {
+  //     return realTokenPrice
+  //   } else {
+  //     return new BigNumber(0.5)
+  //   }
+  // }, [usdcBalance, prtBalance])
   // const estimatedPrice = new BigNumber(
   //   idoResult?.contributed || usdcBalance
   // ).dividedBy(idoResult?.allocation || prtBalance)
@@ -130,7 +133,7 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
           />
           <NumberText
             className="font-bold text-mdx"
-            value={idoResult?.contributed || usdcBalance}
+            value={52029280.58}
             defaultIfNull="N/A"
           />
         </div>
@@ -147,7 +150,7 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
           />
           <NumberText
             className="font-bold text-mdx"
-            value={estimatedPrice}
+            value={realTokenPrice.toString()}
             defaultIfNull="N/A"
             displayDecimals={9}
           />
