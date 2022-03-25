@@ -26,7 +26,7 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
   const [submitting, setSubmitting] = useState(false)
   const [loading, setLoading] = useState(true)
 
-  const WATERMELON_TOTAL = 30_000_000
+  const HONEY_TOTAL = 30_000_000
 
   const contributeBalance = largestAccounts.redeemable?.balance || 0
 
@@ -47,7 +47,7 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
       const tokenMultiple = realTokenPrice.dividedBy(basePrice)
       // console.log('tokenMultiple', tokenMultiple.toString())
       return prtBalance && redeemableSupply
-        ? ((contributeBalance * WATERMELON_TOTAL) / usdcBalance) *
+        ? ((contributeBalance * HONEY_TOTAL) / usdcBalance) *
             Number(tokenMultiple.toString())
         : 0
     } else {

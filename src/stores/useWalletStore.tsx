@@ -24,14 +24,13 @@ export interface PoolAccount {
   publicKey: web3.PublicKey
   distributionAuthority: web3.PublicKey
   startIdoTs: BN
-  endDepositsTs: BN
   endIdoTs: BN
-  withdrawMelonTs: BN
+  withdrawHoneyTs: BN
   nonce: number
   numIdoTokens: BN
   poolUsdc: web3.PublicKey
-  poolWatermelon: web3.PublicKey
-  watermelonMint: web3.PublicKey
+  poolHoney: web3.PublicKey
+  honeyMint: web3.PublicKey
   redeemableMint: web3.PublicKey
 }
 
@@ -58,7 +57,7 @@ interface WalletStoreActions {
   fetchMints: () => Promise<void>
   fetchVaults: (
     pool: PoolAccount
-  ) => Promise<{ usdc: TokenAccount; watermelon: TokenAccount }>
+  ) => Promise<{ usdc: TokenAccount; honey: TokenAccount }>
   fetchRedeemableMint: (pool: PoolAccount) => Promise<void>
   submitDepositContribution: (
     pool: PoolAccount,
@@ -128,7 +127,7 @@ const useWalletStore = create<WalletStore>((set, get) => ({
       const { connection, usdcMint, pools, set } = get()
       const mintKeys = [
         usdcMint,
-        ...pools.map((i) => i.watermelonMint),
+        ...pools.map((i) => i.honeyMint),
         ...pools.map((i) => i.redeemableMint),
       ]
       const mints = await Promise.all(
@@ -162,17 +161,14 @@ const useWalletStore = create<WalletStore>((set, get) => ({
     },
     async fetchVaults(pool: PoolAccount) {
       const { connection } = get()
-      const [accountUsdc, accountWatermelon] =
+      const [accountUsdc, accountHoney] =
         await connection.getMultipleAccountsInfo([
           pool.poolUsdc,
-          pool.poolWatermelon,
+          pool.poolHoney,
         ])
       const usdc = parseTokenAccount(pool.poolUsdc, accountUsdc)
-      const watermelon = parseTokenAccount(
-        pool.poolWatermelon,
-        accountWatermelon
-      )
-      return { usdc: usdc.account, watermelon: watermelon.account }
+      const honey = parseTokenAccount(pool.poolHoney, accountHoney)
+      return { usdc: usdc.account, honey: honey.account }
     },
     async fetchRedeemableMint(pool: PoolAccount) {
       const { connection, set } = get()
@@ -206,7 +202,7 @@ const useWalletStore = create<WalletStore>((set, get) => ({
       )
 
       const [poolSigner] = await web3.PublicKey.findProgramAddress(
-        [pool.watermelonMint.toBuffer()],
+        [pool.honeyMint.toBuffer()],
         program.programId
       )
 
@@ -277,7 +273,7 @@ const useWalletStore = create<WalletStore>((set, get) => ({
       )
 
       const [poolSigner] = await web3.PublicKey.findProgramAddress(
-        [pool.watermelonMint.toBuffer()],
+        [pool.honeyMint.toBuffer()],
         program.programId
       )
 
@@ -322,43 +318,43 @@ const useWalletStore = create<WalletStore>((set, get) => ({
         tokenAccounts,
         pool.redeemableMint
       )
-      const watermelon = findLargestBalanceAccountForMint(
+      const honey = findLargestBalanceAccountForMint(
         mints,
         tokenAccounts,
-        pool.watermelonMint
+        pool.honeyMint
       )
 
-      // console.log('exchangeRedeemableForMango', redeemable, watermelon)
+      // console.log('exchangeRedeemableForMango', redeemable, honey)
 
       const [poolSigner] = await web3.PublicKey.findProgramAddress(
-        [pool.watermelonMint.toBuffer()],
+        [pool.honeyMint.toBuffer()],
         program.programId
       )
 
       const transaction = new web3.Transaction()
 
-      let watermelonAccount = watermelon?.account?.publicKey
-      if (!watermelonAccount) {
+      let honeyAccount = honey?.account?.publicKey
+      if (!honeyAccount) {
         const [ins, pk] = await createAssociatedTokenAccount(
           wallet.publicKey,
           wallet.publicKey,
-          pool.watermelonMint
+          pool.honeyMint
         )
         transaction.add(ins)
-        watermelonAccount = pk
+        honeyAccount = pk
       }
 
       transaction.add(
-        program.instruction.exchangeRedeemableForWatermelon(
+        program.instruction.exchangeRedeemableForHoney(
           redeemable.account.account.amount,
           {
             accounts: {
               poolAccount: pool.publicKey,
               poolSigner,
               redeemableMint: pool.redeemableMint,
-              poolWatermelon: pool.poolWatermelon,
+              poolHoney: pool.poolHoney,
               userAuthority: wallet.publicKey,
-              userWatermelon: watermelonAccount,
+              userHoney: honeyAccount,
               userRedeemable: redeemable.account.publicKey,
               tokenProgram: TOKEN_PROGRAM_ID,
               clock: web3.SYSVAR_CLOCK_PUBKEY,

@@ -9,11 +9,12 @@ export default function usePool(pool: PoolAccount) {
   const endIdo = pool ? moment.unix(pool.endIdoTs.toNumber()) : undefined
 
   const startRedeem = pool
-    ? moment.unix(pool.withdrawMelonTs.toNumber())
+    ? moment.unix(pool.withdrawHoneyTs.toNumber())
     : undefined
-  const endDeposits = pool
-    ? moment.unix(pool.endDepositsTs.toNumber())
-    : undefined
+
+  // const endDeposits = pool
+  //   ? moment.unix(pool.endDepositsTs.toNumber())
+  //   : undefined
 
   // override for test
   // const unixTs = moment().unix()
@@ -22,12 +23,9 @@ export default function usePool(pool: PoolAccount) {
   // const endIdo = moment.unix(unixTs).add(60, 'seconds')
   // const startRedeem = moment.unix(unixTs).add(90, 'seconds')
 
-  const poolStatus =
-    endDeposits?.isBefore() && startRedeem?.isAfter()
-      ? 'Deposits are closed'
-      : startRedeem?.isBefore()
-      ? 'The IDO has ended'
-      : 'The IDO is starting...'
+  const poolStatus = startRedeem?.isBefore()
+    ? 'The IDO has ended'
+    : 'The IDO is starting...'
 
   return {
     updated,
@@ -35,7 +33,6 @@ export default function usePool(pool: PoolAccount) {
     startIdo,
     endIdo,
     startRedeem,
-    endDeposits,
     poolStatus,
   }
 }

@@ -12,10 +12,8 @@ interface CardOverlayProps {
 }
 
 const CardOverlay: React.FC<CardOverlayProps> = ({ children, pool, title }) => {
-  const { startIdo, endIdo, startRedeem, endDeposits, poolStatus } =
-    usePool(pool)
+  const { startIdo, endIdo, startRedeem, poolStatus } = usePool(pool)
   const notStarted = startIdo.isAfter()
-  const noDeposits = endDeposits.isBefore()
   const notRedeem = endIdo.isBefore() && startRedeem.isAfter()
 
   const hasEnded = endIdo.isBefore()
@@ -41,7 +39,7 @@ const CardOverlay: React.FC<CardOverlayProps> = ({ children, pool, title }) => {
       titleRight={
         !hasEnded && (
           <div className="bg-brandSecondary rounded-3xl mt-1 px-3 py-2 text-xs font-bold">
-            {noDeposits ? 'Grace Period' : 'Sale Period'}
+            {/* {notRedeem ? 'Grace Period' : 'Sale Period'} */}
           </div>
         )
       }

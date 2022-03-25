@@ -1,5 +1,5 @@
 {
-  "version": "0.0.0",
+  "version": "0.1.0",
   "name": "ido_pool",
   "instructions": [
     {
@@ -8,7 +8,7 @@
         {
           "name": "poolAccount",
           "isMut": true,
-          "isSigner": false
+          "isSigner": true
         },
         {
           "name": "poolSigner",
@@ -26,7 +26,12 @@
           "isSigner": false
         },
         {
-          "name": "poolWatermelon",
+          "name": "honeyMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolHoney",
           "isMut": true,
           "isSigner": false
         },
@@ -41,7 +46,12 @@
           "isSigner": true
         },
         {
-          "name": "creatorWatermelon",
+          "name": "payer",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "creatorHoney",
           "isMut": true,
           "isSigner": false
         },
@@ -57,6 +67,11 @@
         },
         {
           "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
           "isMut": false,
           "isSigner": false
         }
@@ -75,6 +90,40 @@
           "type": "i64"
         },
         {
+          "name": "endIdoTs",
+          "type": "i64"
+        },
+        {
+          "name": "withdrawHoneyTs",
+          "type": "i64"
+        }
+      ]
+    },
+    {
+      "name": "modifyIdoTime",
+      "accounts": [
+        {
+          "name": "poolAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "distributionAuthority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "payer",
+          "isMut": false,
+          "isSigner": true
+        }
+      ],
+      "args": [
+        {
+          "name": "startIdoTs",
+          "type": "i64"
+        },
+        {
           "name": "endDepositsTs",
           "type": "i64"
         },
@@ -83,7 +132,7 @@
           "type": "i64"
         },
         {
-          "name": "withdrawMelonTs",
+          "name": "withdrawHoneyTs",
           "type": "i64"
         }
       ]
@@ -201,7 +250,7 @@
       ]
     },
     {
-      "name": "exchangeRedeemableForWatermelon",
+      "name": "exchangeRedeemableForHoney",
       "accounts": [
         {
           "name": "poolAccount",
@@ -219,7 +268,7 @@
           "isSigner": false
         },
         {
-          "name": "poolWatermelon",
+          "name": "poolHoney",
           "isMut": true,
           "isSigner": false
         },
@@ -229,7 +278,7 @@
           "isSigner": true
         },
         {
-          "name": "userWatermelon",
+          "name": "userHoney",
           "isMut": true,
           "isSigner": false
         },
@@ -280,6 +329,11 @@
           "isSigner": true
         },
         {
+          "name": "payer",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
           "name": "creatorUsdc",
           "isMut": true,
           "isSigner": false
@@ -295,7 +349,63 @@
           "isSigner": false
         }
       ],
-      "args": []
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "withdrawPoolHoney",
+      "accounts": [
+        {
+          "name": "poolAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolSigner",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolHoney",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "distributionAuthority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "payer",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "creatorHoney",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
     }
   ],
   "accounts": [
@@ -309,11 +419,11 @@
             "type": "publicKey"
           },
           {
-            "name": "poolWatermelon",
+            "name": "poolHoney",
             "type": "publicKey"
           },
           {
-            "name": "watermelonMint",
+            "name": "honeyMint",
             "type": "publicKey"
           },
           {
@@ -337,15 +447,11 @@
             "type": "i64"
           },
           {
-            "name": "endDepositsTs",
-            "type": "i64"
-          },
-          {
             "name": "endIdoTs",
             "type": "i64"
           },
           {
-            "name": "withdrawMelonTs",
+            "name": "withdrawHoneyTs",
             "type": "i64"
           }
         ]
@@ -354,57 +460,72 @@
   ],
   "errors": [
     {
-      "code": 300,
+      "code": 6000,
       "name": "IdoFuture",
       "msg": "IDO must start in the future"
     },
     {
-      "code": 301,
+      "code": 6001,
       "name": "SeqTimes",
       "msg": "IDO times are non-sequential"
     },
     {
-      "code": 302,
+      "code": 6002,
       "name": "StartIdoTime",
       "msg": "IDO has not started"
     },
     {
-      "code": 303,
+      "code": 6003,
       "name": "EndDepositsTime",
       "msg": "Deposits period has ended"
     },
     {
-      "code": 304,
+      "code": 6004,
       "name": "EndIdoTime",
       "msg": "IDO has ended"
     },
     {
-      "code": 305,
+      "code": 6005,
       "name": "IdoNotOver",
       "msg": "IDO has not finished yet"
     },
     {
-      "code": 306,
+      "code": 6006,
       "name": "LowUsdc",
       "msg": "Insufficient USDC"
     },
     {
-      "code": 307,
+      "code": 6007,
       "name": "LowRedeemable",
       "msg": "Insufficient redeemable tokens"
     },
     {
-      "code": 308,
+      "code": 6008,
       "name": "UsdcNotEqRedeem",
       "msg": "USDC total and redeemable total don't match"
     },
     {
-      "code": 309,
+      "code": 6009,
       "name": "InvalidNonce",
       "msg": "Given nonce is invalid"
+    },
+    {
+      "code": 6010,
+      "name": "InvalidParam",
+      "msg": "Invalid param"
+    },
+    {
+      "code": 6011,
+      "name": "UsdcWithdrawNotAllowed",
+      "msg": "Cannot withdraw USDC after depositing"
+    },
+    {
+      "code": 6012,
+      "name": "WithdrawTokensNotAllowed",
+      "msg": "Tokens still need to be redeemed"
     }
   ],
   "metadata": {
-    "address": "5s48HdiM1PjxqHDpGvZUVnX6eKbGbvN15rFHJ7RwxCv4"
+    "address": "7TZqAhcqsPHoZ7sDAeUpDj5woKDDFMYGuX1bgoBsfGPv"
   }
 }

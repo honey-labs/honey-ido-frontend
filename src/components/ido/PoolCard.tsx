@@ -12,7 +12,7 @@ interface PoolCardProps {
 }
 
 const PoolCard: React.FC<PoolCardProps> = ({ pool, round }) => {
-  const { startIdo, endIdo, startRedeem, endDeposits } = usePool(pool)
+  const { startIdo, endIdo, startRedeem } = usePool(pool)
 
   return (
     <CardOverlay title={`IDO SHDW`} pool={pool}>
