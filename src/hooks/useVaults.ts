@@ -13,9 +13,9 @@ export default function useVaults(pool: PoolAccount) {
   const [prtVault, setPrtVault] = useState<TokenAccount | undefined>()
 
   const fetchVaults = useCallback(async () => {
-    const { usdc, watermelon } = await actions.fetchVaults(pool)
+    const { usdc, honey } = await actions.fetchVaults(pool)
     setUsdcVault(usdc)
-    setPrtVault(watermelon)
+    setPrtVault(honey)
   }, [actions, setUsdcVault, setPrtVault])
 
   useEffect(() => {
