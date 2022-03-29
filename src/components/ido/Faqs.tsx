@@ -50,13 +50,13 @@ const faqs = [
         <br />
         <Text>
           Step #5 - After the deposit phase has expired, you can return to the
-          IDO page and collect your $SHDW token! The redemption phase will last
-          for as long as there are outstanding $SHDW tokens needing to be
+          IDO page and collect your $HONEY token! The redemption phase will last
+          for as long as there are outstanding $HONEY tokens needing to be
           redeemed.
         </Text>
         <br />
         <Text>
-          Step #6 - Congratulations! Your $SHDW tokens are now in your wallet!
+          Step #6 - Congratulations! Your $HONEY tokens are now in your wallet!
         </Text>
         <br />
       </>

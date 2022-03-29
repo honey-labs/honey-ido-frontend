@@ -22,7 +22,7 @@ const SecPopup = ({ popupCallback }) => {
         </Text>
         <Box marginY="8">
           <Text lineHeight="1.625" align="center">
-            By using this website and investing in the <b>SHDW</b> token, you
+            By using this website and investing in the <b>HONEY</b> token, you
             will be deemed to have: <br /> <br />
             (I) read the{' '}
             <a
@@ -46,7 +46,7 @@ const SecPopup = ({ popupCallback }) => {
             <a
               className="text-inputSecondary"
               rel="noreferrer"
-              href="https://genesysgo.medium.com/the-comprehensive-guide-to-genesysgo-and-the-shdw-ido-278b90d3186c"
+              href="https://genesysgo.medium.com/the-comprehensive-guide-to-genesysgo-and-the-HONEY-ido-278b90d3186c"
               target="_blank"
             >
               <Text color="accent" as="span">
@@ -55,7 +55,7 @@ const SecPopup = ({ popupCallback }) => {
             </a>
             . <br />
             (II) confirmed that you are not based in a jurisdiction where
-            buying, trading and/or owning the SHDW token would be prohibited or
+            buying, trading and/or owning the HONEY token would be prohibited or
             restricted in any manner. <br />
             (III) understood that, despite our best efforts, there can still be
             exploit risks that exist within the app. (Please do not invest more
