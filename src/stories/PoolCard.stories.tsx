@@ -14,13 +14,10 @@ import useWalletStore from '../stores/useWalletStore'
 const idoConfig = IDO_ENDPOINTS.find((i) => i.network === 'devnet')
 
 const getMockPool = (
-  status: 'starting' | 'started' | 'endDeposit' | 'ended' | 'startRedeem'
+  status: 'starting' | 'started' | 'ended' | 'startRedeem'
 ) => {
   const startIdo = moment().add(status === 'starting' ? 1 : 0, 'hours')
-  const endDeposits = moment().add(
-    /ended|endDeposit|startRedeem/.test(status) ? 0 : 1,
-    'hours'
-  )
+
   const endIdo = moment().add(/ended|startRedeem/.test(status) ? 0 : 1, 'hours')
   const startRedeem = moment().add(status === 'startRedeem' ? 0 : 3, 'hours')
   return {
@@ -28,15 +25,14 @@ const getMockPool = (
     numIdoTokens: new BN(2),
     publicKey: new web3.PublicKey(idoConfig.pools[0]),
     poolUsdc: new web3.PublicKey(idoConfig.usdcMint),
-    poolWatermelon: new web3.PublicKey(idoConfig.usdcMint),
+    poolHoney: new web3.PublicKey(idoConfig.usdcMint),
     redeemableMint: new web3.PublicKey(idoConfig.usdcMint),
-    watermelonMint: new web3.PublicKey(idoConfig.usdcMint),
+    honeyMint: new web3.PublicKey(idoConfig.usdcMint),
     distributionAuthority: new web3.PublicKey(0),
     // times
     startIdoTs: new BN(startIdo.unix()),
-    endDepositsTs: new BN(endDeposits.unix()),
     endIdoTs: new BN(endIdo.unix()),
-    withdrawMelonTs: new BN(startRedeem.unix()),
+    withdrawHoneyTs: new BN(startRedeem.unix()),
   }
 }
 
@@ -86,12 +82,6 @@ IDO_Starting.args = {
 export const IDO_Started = Template.bind({})
 IDO_Started.args = {
   status: 'started',
-  round: '1',
-}
-
-export const IDO_Deposits_Ended = Template.bind({})
-IDO_Deposits_Ended.args = {
-  status: 'endDeposit',
   round: '1',
 }
 

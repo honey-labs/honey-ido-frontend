@@ -9,7 +9,6 @@ import PoolCountdown from './PoolCountdown'
 
 interface StatsCardProps {
   endIdo: moment.Moment
-  endDeposits: moment.Moment
   poolStatus: string
   estimatedPrice: BigNumber
   vaultPrtBalance: number
@@ -18,7 +17,6 @@ interface StatsCardProps {
 
 const StatsCard: React.FC<StatsCardProps> = ({
   endIdo,
-  endDeposits,
   poolStatus,
   estimatedPrice,
   vaultPrtBalance,
@@ -58,7 +56,7 @@ const StatsCard: React.FC<StatsCardProps> = ({
           </div>
           <PoolCountdown
             poolStatus={poolStatus}
-            date={endDeposits}
+            date={endIdo}
             className="justify-center pt-2"
           />
         </div>
@@ -94,6 +92,7 @@ const StatsCard: React.FC<StatsCardProps> = ({
           />
         </div>
       </div>
+
       <div className="bg-secondary rounded-xl p-6 text-center">
         <p className="text-sm text-secondary">Estimated Token Price</p>
         <div className="flex items-center justify-center pt-2">
@@ -112,6 +111,7 @@ const StatsCard: React.FC<StatsCardProps> = ({
           />
         </div>
       </div>
+
       <div className="bg-secondary rounded-xl p-6 text-center">
         <p className="text-sm text-secondary">SHDW For Sale</p>
         <div className="flex items-center justify-center pt-2">

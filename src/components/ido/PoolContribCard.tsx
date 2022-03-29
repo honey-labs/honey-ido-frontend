@@ -121,7 +121,7 @@ const PoolContribCard: React.FC<PoolContribCardProps> = ({ pool }) => {
   const actions = useWalletStore((s) => s.actions)
   const connected = useWalletStore((s) => s.connected)
   const largestAccounts = useLargestAccounts(pool)
-  const { startIdo, endIdo, endDeposits, poolStatus } = usePool(pool)
+  const { startIdo, endIdo, poolStatus } = usePool(pool)
   const vaults = useVaults(pool)
   // const { ipAllowed } = useIpAddress()
 
@@ -135,6 +135,8 @@ const PoolContribCard: React.FC<PoolContribCardProps> = ({ pool }) => {
   const redeemableBalance = largestAccounts.redeemable?.balance || 0
   const totalBalance = isDeposit ? usdcBalance : redeemableBalance
   const [confirmModalOpen, setConfirmModalOpen] = useState(false)
+
+  // const [estdPrice, setEstdPrice] = useState(0);
 
   useEffect(() => {
     setInputAmount('')
@@ -155,14 +157,14 @@ const PoolContribCard: React.FC<PoolContribCardProps> = ({ pool }) => {
   const handleChangeAmount = useCallback(
     (amount: string) => {
       setInputAmount(amount)
-      if (isDeposit && endDeposits?.isBefore() && +amount > redeemableBalance) {
+      if (isDeposit && endIdo?.isBefore() && +amount > redeemableBalance) {
         notify({
           title: 'Deposits ended',
           message: 'Contribution cannot increase',
         })
       }
     },
-    [isDeposit, endDeposits, redeemableBalance]
+    [isDeposit, redeemableBalance]
   )
 
   const handleRefresh = useCallback(async () => {
@@ -256,9 +258,7 @@ const PoolContribCard: React.FC<PoolContribCardProps> = ({ pool }) => {
     }
   }, [submitting, isDeposit])
 
-  const canDeposit =
-    startIdo.isBefore() && endIdo.isAfter() && endDeposits.isAfter()
-  const canWithdraw = startIdo.isBefore() && endIdo.isAfter()
+  const canDeposit = startIdo.isBefore() && endIdo.isAfter()
 
   useEffect(() => {
     if (!canDeposit && startIdo.isBefore()) {
@@ -269,11 +269,7 @@ const PoolContribCard: React.FC<PoolContribCardProps> = ({ pool }) => {
   const inputError = getInputError()
 
   const disableSubmit =
-    !connected ||
-    loading ||
-    submitting ||
-    inputError.hasError ||
-    (isDeposit ? !canDeposit : !canWithdraw)
+    !connected || loading || submitting || inputError.hasError || !canDeposit
 
   return (
     <>
@@ -326,7 +322,7 @@ const PoolContribCard: React.FC<PoolContribCardProps> = ({ pool }) => {
         {submitting ? 'Waiting approval' : isDeposit ? `Deposit` : `Withdraw`}
       </Button> */}
       {/* Country Not Allowed 🇺🇸😭 */}
-      {endDeposits?.isBefore() && endIdo?.isAfter() && (
+      {/* {endDeposits?.isBefore() && endIdo?.isAfter() && (
         <div className="flex items-center space-x-2 mb-4">
           <InformationCircleIcon className="h-5 w-5 text-secondary" />
           <div className="text-xxs sm:text-xs">
@@ -336,9 +332,9 @@ const PoolContribCard: React.FC<PoolContribCardProps> = ({ pool }) => {
             <p>Any withdrawals cannot be reversed.</p>
           </div>
         </div>
-      )}
+      )} */}
+
       <StatsCard
-        endDeposits={endDeposits}
         endIdo={endIdo}
         poolStatus={poolStatus}
         vaultPrtBalance={vaults.prtBalance}

@@ -21,16 +21,17 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
   const connected = useWalletStore((s) => s.connected)
   const mints = useWalletStore((s) => s.mints)
   const largestAccounts = useLargestAccounts(pool)
-  const { prtBalance, usdcBalance, fetchVaults } = useVaults(pool)
+  const { prtBalance, usdcBalance, fetchVaults, estimatedPrice } =
+    useVaults(pool)
   const { startRedeem, poolStatus } = usePool(pool)
   const [submitting, setSubmitting] = useState(false)
   const [loading, setLoading] = useState(true)
 
-  const WATERMELON_TOTAL = 30_000_000
+  const HONEY_TOTAL = 30_000_000
 
   const contributeBalance = largestAccounts.redeemable?.balance || 0
 
-  const realTokenPrice = new BigNumber(1.734398352)
+  const realTokenPrice = estimatedPrice
 
   const redeemablePrtAmount = useMemo(() => {
     const redeemableSupply = calculateSupply(mints, pool.redeemableMint)
@@ -47,7 +48,7 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
       const tokenMultiple = realTokenPrice.dividedBy(basePrice)
       // console.log('tokenMultiple', tokenMultiple.toString())
       return prtBalance && redeemableSupply
-        ? ((contributeBalance * WATERMELON_TOTAL) / usdcBalance) *
+        ? ((contributeBalance * HONEY_TOTAL) / usdcBalance) *
             Number(tokenMultiple.toString())
         : 0
     } else {
@@ -133,7 +134,7 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
           />
           <NumberText
             className="font-bold text-mdx"
-            value={52029280.58}
+            value={usdcBalance}
             defaultIfNull="N/A"
           />
         </div>
@@ -150,7 +151,7 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
           />
           <NumberText
             className="font-bold text-mdx"
-            value={realTokenPrice.toString()}
+            value={usdcBalance / 3000000}
             defaultIfNull="N/A"
             displayDecimals={9}
           />

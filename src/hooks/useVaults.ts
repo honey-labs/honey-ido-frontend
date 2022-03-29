@@ -13,9 +13,9 @@ export default function useVaults(pool: PoolAccount) {
   const [prtVault, setPrtVault] = useState<TokenAccount | undefined>()
 
   const fetchVaults = useCallback(async () => {
-    const { usdc, watermelon } = await actions.fetchVaults(pool)
+    const { usdc, honey } = await actions.fetchVaults(pool)
     setUsdcVault(usdc)
-    setPrtVault(watermelon)
+    setPrtVault(honey)
   }, [actions, setUsdcVault, setPrtVault])
 
   useEffect(() => {
@@ -45,16 +45,18 @@ export default function useVaults(pool: PoolAccount) {
   )
 
   const estimatedPrice = useMemo(() => {
-    if (usdcBalance && prtBalance) {
-      const tokenPrice = new BigNumber(usdcBalance).dividedBy(prtBalance)
-      if (tokenPrice >= new BigNumber(0.5)) {
-        return tokenPrice
-      } else {
-        return new BigNumber(0.5)
-      }
-    } else {
-      return new BigNumber(0.5)
-    }
+    // if (usdcBalance && prtBalance) {
+    //   const tokenPrice = new BigNumber(usdcBalance).dividedBy(prtBalance)
+    //   if (tokenPrice >= new BigNumber(0.5)) {
+    //     return tokenPrice
+    //   } else {
+    //     return new BigNumber(0.5)
+    //   }
+    // } else {
+    //   return new BigNumber(0.5)
+    // }
+
+    return new BigNumber(usdcBalance / prtBalance)
   }, [usdcBalance, prtBalance])
 
   return { usdcBalance, prtBalance, estimatedPrice, fetchVaults }
