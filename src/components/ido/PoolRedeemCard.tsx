@@ -151,7 +151,7 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
           />
           <NumberText
             className="font-bold text-mdx"
-            value={estimatedPrice}
+            value={usdcBalance / 3000000}
             defaultIfNull="N/A"
             displayDecimals={9}
           />
