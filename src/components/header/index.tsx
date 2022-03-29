@@ -1,3 +1,4 @@
+import { Box, Heading, Stack } from 'degen'
 import React from 'react'
 
 import ConnectWallet from '../account/ConnectWallet'
@@ -6,16 +7,23 @@ import { RpcSwitcher } from './RpcSwitcher'
 
 export const Header: React.FC = () => {
   return (
-    <header className="absolute px-2 sm:px-6 w-full z-10 h-auto mt-8">
-      <div className="flex flex-row items-center justify-between">
-        <div>
-          <Logo />
-        </div>
-        <div className="flex flex-row items-center justify-end space-x-2 sm:space-x-4">
-          {/* <RpcSwitcher /> */}
-          <ConnectWallet />
-        </div>
-      </div>
-    </header>
+    <Heading>
+      <Box paddingX="4" width="full" zIndex="10" height="auto" marginTop="8">
+        <Box
+          display="flex"
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <Box>
+            <Logo />
+          </Box>
+          <Stack space="3.5" direction="horizontal">
+            {/* <RpcSwitcher /> */}
+            <ConnectWallet />
+          </Stack>
+        </Box>
+      </Box>
+    </Heading>
   )
 }

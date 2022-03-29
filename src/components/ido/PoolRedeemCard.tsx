@@ -1,4 +1,5 @@
 import BigNumber from 'bignumber.js'
+import { Box, Button, Stack, Text } from 'degen'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { IDO_RESULTS } from '../../config/constants'
@@ -8,9 +9,9 @@ import useVaults from '../../hooks/useVaults'
 import { notify } from '../../stores/useNotificationStore'
 import useWalletStore, { PoolAccount } from '../../stores/useWalletStore'
 import { calculateSupply } from '../../utils/balance'
-import { Button } from '../button'
 import NumberText from '../texts/Number'
 import PoolCountdown from './PoolCountdown'
+// import * as styles from '../../styles/styles.css'
 
 interface PoolRedeemCardProps {
   pool: PoolAccount
@@ -21,7 +22,8 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
   const connected = useWalletStore((s) => s.connected)
   const mints = useWalletStore((s) => s.mints)
   const largestAccounts = useLargestAccounts(pool)
-  const { prtBalance, usdcBalance, fetchVaults } = useVaults(pool)
+  const { prtBalance, usdcBalance, fetchVaults, estimatedPrice } =
+    useVaults(pool)
   const { startRedeem, poolStatus } = usePool(pool)
   const [submitting, setSubmitting] = useState(false)
   const [loading, setLoading] = useState(true)
@@ -30,7 +32,7 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
 
   const contributeBalance = largestAccounts.redeemable?.balance || 0
 
-  const realTokenPrice = new BigNumber(1.734398352)
+  const realTokenPrice = estimatedPrice
 
   const redeemablePrtAmount = useMemo(() => {
     const redeemableSupply = calculateSupply(mints, pool.redeemableMint)
@@ -110,20 +112,38 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
     !connected || loading || redeemablePrtAmount <= 0 || startRedeem.isAfter()
 
   return (
-    <div className="">
+    <Stack space="2">
       {startRedeem.isAfter() && (
-        <div className="bg-secondary rounded-xl p-6 text-center mb-2">
-          <p className="text-sm text-secondary">Redeem starts</p>
+        <Box
+          backgroundColor="backgroundSecondary"
+          textAlign="center"
+          marginBottom="2"
+        >
+          <Text size="small" color="textSecondary">
+            Redeem starts
+          </Text>
           <PoolCountdown
             poolStatus={poolStatus}
             date={startRedeem}
             className="justify-center pt-2"
           />
-        </div>
+        </Box>
       )}
-      <div className="bg-secondary rounded-xl p-6 text-center">
-        <p className="text-sm text-secondary">Total raised</p>
-        <div className="flex items-center justify-center pt-2">
+      <Box
+        backgroundColor="backgroundSecondary"
+        borderRadius="2xLarge"
+        padding="6"
+        textAlign="center"
+      >
+        <Text size="small" color="textSecondary">
+          Total raised
+        </Text>
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          paddingTop="2"
+        >
           <img
             alt=""
             width="20"
@@ -133,14 +153,26 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
           />
           <NumberText
             className="font-bold text-mdx"
-            value={52029280.58}
+            value={usdcBalance}
             defaultIfNull="N/A"
           />
-        </div>
-      </div>
-      <div className="bg-secondary rounded-xl p-6 text-center mt-2">
-        <p className="text-sm text-secondary">Token Price</p>
-        <div className="flex items-center justify-center pt-2">
+        </Box>
+      </Box>
+      <Box
+        backgroundColor="backgroundSecondary"
+        borderRadius="2xLarge"
+        padding="6"
+        textAlign="center"
+      >
+        <Text size="small" color="textSecondary">
+          Token Price
+        </Text>
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          paddingTop="2"
+        >
           <img
             alt=""
             width="20"
@@ -150,15 +182,27 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
           />
           <NumberText
             className="font-bold text-mdx"
-            value={realTokenPrice.toString()}
+            value={usdcBalance / 3000000}
             defaultIfNull="N/A"
             displayDecimals={9}
           />
-        </div>
-      </div>
-      <div className="bg-secondary rounded-xl p-6 text-center mt-2">
-        <p className="text-sm text-secondary">Your contribution</p>
-        <div className="flex items-center justify-center pt-2">
+        </Box>
+      </Box>
+      <Box
+        textAlign="center"
+        backgroundColor="backgroundSecondary"
+        borderRadius="2xLarge"
+        padding="6"
+      >
+        <Text size="small" color="textSecondary">
+          Your contribution
+        </Text>
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          paddingTop="2"
+        >
           <img
             alt=""
             width="20"
@@ -171,11 +215,23 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
             value={contributeBalance}
             defaultIfNull="N/A"
           />
-        </div>
-      </div>
-      <div className="bg-secondary rounded-xl p-6 text-center mt-2">
-        <p className="text-sm text-secondary">Redeemable amount</p>
-        <div className="flex items-center justify-center pt-2">
+        </Box>
+      </Box>
+      <Box
+        backgroundColor="backgroundSecondary"
+        textAlign="center"
+        borderRadius="2xLarge"
+        padding="6"
+      >
+        <Text size="small" color="textSecondary">
+          Redeemable amount
+        </Text>
+        <Box
+          display="flex"
+          paddingTop="2"
+          justifyContent="center"
+          alignItems="center"
+        >
           <img
             alt=""
             width="20"
@@ -189,17 +245,17 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
             displayDecimals={9}
             defaultIfNull="N/A"
           />
-        </div>
-      </div>
+        </Box>
+      </Box>
       <Button
         onClick={handleRedeem}
-        className="w-full mt-6"
+        width="full"
         disabled={disableSubmit}
-        isLoading={submitting}
+        loading={submitting}
       >
-        {submitting ? 'Waiting approval' : 'Redeem SHDW'}
+        {submitting ? 'Waiting approval' : 'Redeem HONEY'}
       </Button>
-    </div>
+    </Stack>
   )
 }
 

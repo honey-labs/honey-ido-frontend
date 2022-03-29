@@ -4,6 +4,7 @@ import {
   InformationCircleIcon,
 } from '@heroicons/react/outline'
 import BigNumber from 'bignumber.js'
+import { Box, Button } from 'degen'
 import React, {
   Fragment,
   useCallback,
@@ -18,7 +19,6 @@ import usePool from '../../hooks/usePool'
 import useVaults from '../../hooks/useVaults'
 import { notify } from '../../stores/useNotificationStore'
 import useWalletStore, { PoolAccount } from '../../stores/useWalletStore'
-import { Button } from '../button'
 import { AmountInput } from '../input/AmountInput'
 import { ButtonMenu, ButtonMenuItem } from '../menu'
 import StatsCard from './StatsCard'
@@ -135,6 +135,8 @@ const PoolContribCard: React.FC<PoolContribCardProps> = ({ pool }) => {
   const redeemableBalance = largestAccounts.redeemable?.balance || 0
   const totalBalance = isDeposit ? usdcBalance : redeemableBalance
   const [confirmModalOpen, setConfirmModalOpen] = useState(false)
+
+  // const [estdPrice, setEstdPrice] = useState(0);
 
   useEffect(() => {
     setInputAmount('')
@@ -303,14 +305,16 @@ const PoolContribCard: React.FC<PoolContribCardProps> = ({ pool }) => {
         onChange={handleChangeAmount}
         disabled={!connected}
       />
-      <Button
-        onClick={isDeposit ? handleModalOpen : handleSubmitContribution}
-        className="w-full my-4"
-        disabled={disableSubmit}
-        isLoading={submitting}
-      >
-        {submitting ? 'Waiting approval' : isDeposit ? `Deposit` : `Withdraw`}
-      </Button>
+      <Box marginBottom="8">
+        <Button
+          onClick={isDeposit ? handleModalOpen : handleSubmitContribution}
+          width="full"
+          disabled={disableSubmit}
+          loading={submitting}
+        >
+          {submitting ? 'Waiting approval' : isDeposit ? `Deposit` : `Withdraw`}
+        </Button>
+      </Box>
       {/* <Button
         onClick={handleSubmitContribution}
         className="w-full my-4"
