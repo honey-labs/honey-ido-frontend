@@ -1,5 +1,6 @@
 import { QuestionMarkCircleIcon } from '@heroicons/react/outline'
 import BigNumber from 'bignumber.js'
+import { Box, Text, vars } from 'degen'
 import moment from 'moment'
 import React from 'react'
 
@@ -27,7 +28,7 @@ const StatsCard: React.FC<StatsCardProps> = ({
     tooltip: tooltipSale,
     tooltipVisible: tooltipSaleVisible,
   } = useTooltip(
-    `In the first 24 hours, you may deposit your USDC into the vault. During the sale period, the SHDW price can fluctuate.`,
+    `In the first 24 hours, you may deposit your USDC into the vault. During the sale period, the HONEY price can fluctuate.`,
     {
       placement: 'bottom-start',
       trigger: 'hover',
@@ -45,15 +46,25 @@ const StatsCard: React.FC<StatsCardProps> = ({
 
   return (
     <div className="flex flex-col space-y-2">
-      <div className="bg-secondary rounded-xl p-6 flex items-center justify-center">
+      <Box
+        backgroundColor="backgroundSecondary"
+        borderRadius="2xLarge"
+        padding="6"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+      >
         <div>
-          <div className="text-sm text-secondary flex flex-row items-center justify-center">
-            <span className="mr-1">Sale Period Ends</span>
-            <span ref={targetSaleRef}>
-              <QuestionMarkCircleIcon className="h-5 w-5" />
-            </span>
-            {tooltipSaleVisible && tooltipSale}
-          </div>
+          <Box display="flex" alignItems="center" justifyContent="center">
+            <Text as="p" size="small" color="textSecondary">
+              Sale Period Ends
+              <QuestionMarkCircleIcon
+                color={vars.colors.text}
+                className="h-5 w-5"
+              />
+              {tooltipSaleVisible && <Text size="small">{tooltipSale}</Text>}
+            </Text>
+          </Box>
           <PoolCountdown
             poolStatus={poolStatus}
             date={endIdo}
@@ -74,10 +85,22 @@ const StatsCard: React.FC<StatsCardProps> = ({
             className="justify-center pt-2"
           />
         </div> */}
-      </div>
-      <div className="bg-secondary rounded-xl p-6 text-center">
-        <p className="text-sm text-secondary">USDC Contributed</p>
-        <div className="flex items-center justify-center pt-2">
+      </Box>
+      <Box
+        backgroundColor="backgroundSecondary"
+        borderRadius="2xLarge"
+        padding="6"
+        textAlign="center"
+      >
+        <Text size="small" color="textSecondary">
+          USDC Contributed
+        </Text>
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          paddingTop="2"
+        >
           <img
             alt=""
             width="20"
@@ -90,11 +113,23 @@ const StatsCard: React.FC<StatsCardProps> = ({
             value={vaultUsdcBalance}
             defaultIfNull="N/A"
           />
-        </div>
-      </div>
-      <div className="bg-secondary rounded-xl p-6 text-center">
-        <p className="text-sm text-secondary">Estimated Token Price</p>
-        <div className="flex items-center justify-center pt-2">
+        </Box>
+      </Box>
+      <Box
+        backgroundColor="backgroundSecondary"
+        borderRadius="2xLarge"
+        padding="6"
+        textAlign="center"
+      >
+        <Text size="small" color="textSecondary">
+          Estimated Token Price
+        </Text>
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          paddingTop="2"
+        >
           <img
             alt=""
             width="20"
@@ -108,11 +143,23 @@ const StatsCard: React.FC<StatsCardProps> = ({
             defaultIfNull="N/A"
             displayDecimals={9}
           />
-        </div>
-      </div>
-      <div className="bg-secondary rounded-xl p-6 text-center">
-        <p className="text-sm text-secondary">SHDW For Sale</p>
-        <div className="flex items-center justify-center pt-2">
+        </Box>
+      </Box>
+      <Box
+        backgroundColor="backgroundSecondary"
+        padding="6"
+        textAlign="center"
+        borderRadius="2xLarge"
+      >
+        <Text size="small" color="textSecondary">
+          SHDW For Sale
+        </Text>
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          paddingTop="2"
+        >
           <img
             className="h-5 mr-2 w-auto"
             src="/icons/logo.png"
@@ -124,8 +171,8 @@ const StatsCard: React.FC<StatsCardProps> = ({
             defaultIfNull="N/A"
             displayDecimals={9}
           />
-        </div>
-      </div>
+        </Box>
+      </Box>
     </div>
   )
 }
