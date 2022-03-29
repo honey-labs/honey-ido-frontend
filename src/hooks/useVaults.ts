@@ -45,16 +45,18 @@ export default function useVaults(pool: PoolAccount) {
   )
 
   const estimatedPrice = useMemo(() => {
-    if (usdcBalance && prtBalance) {
-      const tokenPrice = new BigNumber(usdcBalance).dividedBy(prtBalance)
-      if (tokenPrice >= new BigNumber(0.5)) {
-        return tokenPrice
-      } else {
-        return new BigNumber(0.5)
-      }
-    } else {
-      return new BigNumber(0.5)
-    }
+    // if (usdcBalance && prtBalance) {
+    //   const tokenPrice = new BigNumber(usdcBalance).dividedBy(prtBalance)
+    //   if (tokenPrice >= new BigNumber(0.5)) {
+    //     return tokenPrice
+    //   } else {
+    //     return new BigNumber(0.5)
+    //   }
+    // } else {
+    //   return new BigNumber(0.5)
+    // }
+
+    return new BigNumber(usdcBalance / prtBalance)
   }, [usdcBalance, prtBalance])
 
   return { usdcBalance, prtBalance, estimatedPrice, fetchVaults }

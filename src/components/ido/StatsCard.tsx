@@ -92,6 +92,7 @@ const StatsCard: React.FC<StatsCardProps> = ({
           />
         </div>
       </div>
+
       <div className="bg-secondary rounded-xl p-6 text-center">
         <p className="text-sm text-secondary">Estimated Token Price</p>
         <div className="flex items-center justify-center pt-2">
@@ -110,6 +111,7 @@ const StatsCard: React.FC<StatsCardProps> = ({
           />
         </div>
       </div>
+
       <div className="bg-secondary rounded-xl p-6 text-center">
         <p className="text-sm text-secondary">SHDW For Sale</p>
         <div className="flex items-center justify-center pt-2">
