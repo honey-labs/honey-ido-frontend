@@ -1,5 +1,6 @@
 import { Disclosure } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/outline'
+import { Box, Stack, Text, vars } from 'degen'
 
 const faqs = [
   {
@@ -24,39 +25,39 @@ const faqs = [
     question: 'How does the IDO work?',
     answer: (
       <>
-        <p>
+        <Text>
           Step #1 - Connect your wallet (we recommend using Phantom). You will
           need to have USDC in your wallet in order to participate in the IDO.
           You do not need to own a Shadowy Super Coder NFT in order to
           participate in the IDO.
-        </p>
+        </Text>
         <br />
-        <p>
+        <Text>
           Step #2 - Enter the amount of USDC you wish to contribute to the IDO
           pool and click deposit.
-        </p>
+        </Text>
         <br />
-        <p>
+        <Text>
           Step #3 - Confirm the amount of USDC you wish to contribute to the IDO
           pool. This finalizes your deposit.
-        </p>
+        </Text>
         <br />
-        <p>
+        <Text>
           Step #4 - Wait until the deposit phase of the IDO expires. The deposit
           phase opens on Jan 3rd at 2pm UTC and will last for 24 hours in order
           to ensure people from all time zones are able to participate.
-        </p>
+        </Text>
         <br />
-        <p>
+        <Text>
           Step #5 - After the deposit phase has expired, you can return to the
           IDO page and collect your $SHDW token! The redemption phase will last
           for as long as there are outstanding $SHDW tokens needing to be
           redeemed.
-        </p>
+        </Text>
         <br />
-        <p>
+        <Text>
           Step #6 - Congratulations! Your $SHDW tokens are now in your wallet!
-        </p>
+        </Text>
         <br />
       </>
     ),
@@ -74,32 +75,34 @@ const faqs = [
     question: `My transaction timed out while trying to deposit.`,
     answer: (
       <>
-        <p>
+        <Text>
           This can be caused by numerous different factors. The following steps
           are a good starting point to resolve the issue:
-        </p>
+        </Text>
         <br />
-        <p>
+        <Text>
           Check that you have SOL in the wallet you&apos;re using. If you do
           not, try sending around 0.1 SOL to your wallet.
-        </p>
+        </Text>
         <br />
-        <p>
+        <Text>
           Check that you&apos;re using the latest version of
           Chrome/Brave/Firefox.
-        </p>
+        </Text>
         <br />
-        <p>Try a different network (VPN, connect to a mobile hotspot, etc)</p>
+        <Text>
+          Try a different network (VPN, connect to a mobile hotspot, etc)
+        </Text>
         <br />
-        <p>
+        <Text>
           Try a different web browser. Example: if using Chrome, try Firefox.
-        </p>
+        </Text>
         <br />
-        <p>Try small test transactions to see if that goes through.</p>
-        <p>
+        <Text>Try small test transactions to see if that goes through.</Text>
+        <Text>
           Shift your balance to a different wallet and try from that different
           wallet.
-        </p>
+        </Text>
         <br />
       </>
     ),
@@ -112,45 +115,46 @@ function classNames(...classes) {
 
 export default function FAQs() {
   return (
-    <div className="bg-gray-50">
+    <Box>
       <div className="max-w-7xl mx-auto pt-6 pb-12 px-4 sm:py-16 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto divide-y-2 divide-gray-200">
-          <h2 className="text-center text-2xl font-extrabold text-gray-900">
+          <Text as="h2" align="center" size="headingTwo" weight={'bold'}>
             Frequently asked questions
-          </h2>
-          <dl className="mt-6 space-y-6 divide-y divide-gray-200">
-            {faqs.map((faq) => (
-              <Disclosure as="div" key={faq.question} className="pt-6">
-                {({ open }) => (
-                  <>
-                    <dt className="text-md">
-                      <Disclosure.Button className="text-left w-full flex justify-between items-start text-gray-400">
-                        <span className="font-bold text-gray-900">
-                          {faq.question}
-                        </span>
-                        <span className="ml-6 h-7 flex items-center">
-                          <ChevronDownIcon
-                            className={classNames(
-                              open ? '-rotate-180' : 'rotate-0',
-                              'h-6 w-6 transform'
-                            )}
-                            aria-hidden="true"
-                          />
-                        </span>
-                      </Disclosure.Button>
-                    </dt>
-                    <Disclosure.Panel as="dd" className="mt-2 pr-12">
-                      <p className="text-base text-gray-500 leading-snug">
-                        {faq.answer}
-                      </p>
-                    </Disclosure.Panel>
-                  </>
-                )}
-              </Disclosure>
-            ))}
-          </dl>
+          </Text>
+          <Box marginTop="6">
+            <Stack space="6">
+              {faqs.map((faq) => (
+                <Box borderTopWidth="0.5" key={faq.question}>
+                  <Disclosure as="div" className="pt-6">
+                    {({ open }) => (
+                      <>
+                        <dt className="text-md">
+                          <Disclosure.Button className="text-left w-full flex justify-between items-start text-gray-400">
+                            <Text>{faq.question}</Text>
+                            <span className="ml-6 h-7 flex items-center">
+                              <ChevronDownIcon
+                                color={vars.colors.textSecondary}
+                                className={classNames(
+                                  open ? '-rotate-180' : 'rotate-0',
+                                  'h-6 w-6 transform'
+                                )}
+                                aria-hidden="true"
+                              />
+                            </span>
+                          </Disclosure.Button>
+                        </dt>
+                        <Disclosure.Panel as="dd" className="mt-2 pr-12">
+                          <Text>{faq.answer}</Text>
+                        </Disclosure.Panel>
+                      </>
+                    )}
+                  </Disclosure>
+                </Box>
+              ))}
+            </Stack>
+          </Box>
         </div>
       </div>
-    </div>
+    </Box>
   )
 }

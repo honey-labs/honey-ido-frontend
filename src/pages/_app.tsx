@@ -1,12 +1,13 @@
 import '../components/toast/toast.scss'
 import '../components/tooltip/tooltip.scss'
 import '../styles/global.scss'
+import 'degen/styles'
 
 import BigNumber from 'bignumber.js'
+import { ThemeProvider } from 'degen'
 import * as Fathom from 'fathom-client'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { ThemeProvider } from 'next-themes'
 import React, { useEffect } from 'react'
 
 import Ido from './ido'
@@ -17,9 +18,9 @@ BigNumber.config({
 })
 
 function MyApp({ Component, pageProps }) {
-  const title = 'Genesys Go IDO'
+  const title = 'Honey IDO'
   const description =
-    'This is the IDO (initial DEX offering) page for Genesys Go.'
+    'This is the IDO (initial DEX offering) page for Honey Finance.'
   const keywords = 'Genesys Go, Shadowy Super Coder Dao, SSC DAO, SSC, Solana'
   const baseUrl = 'https://ido.genesysgo.com'
 
@@ -83,7 +84,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@genesysgo" />
       </Head>
-      <ThemeProvider defaultTheme="dark" attribute="class">
+      <ThemeProvider defaultMode="dark" defaultAccent="red">
         <Ido Component={Component} pageProps={pageProps} />
       </ThemeProvider>
     </>

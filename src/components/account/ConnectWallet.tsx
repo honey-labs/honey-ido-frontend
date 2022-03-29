@@ -1,5 +1,6 @@
 import { useWallet, WalletModal } from '@parrotfi/wallets'
 import classNames from 'classnames'
+import { Button } from 'degen'
 import React, { useCallback } from 'react'
 
 import useModal from '../../hooks/useModal'
@@ -29,21 +30,9 @@ export const ConnectWallet: React.FC<ConnectWalletProps> = ({
   }, [wallet, connected])
 
   return (
-    <button
-      className={classNames(
-        'h-10 px-4 text-magenta2 font-bold rounded-xl border flex flex-row items-center justify-center',
-        'outline-none focus:outline-none hover:text-white background:#191a27',
-        'shadow-outerButton custom-button-active-effect',
-        {
-          'text-brandPrimary hover:bg-magenta2': !connected,
-          'text-failure hover:bg-magenta2': connected,
-        },
-        className
-      )}
-      onClick={handleConnect}
-    >
+    <Button width="40" size="small" onClick={handleConnect}>
       {connected == true ? 'Disconnect' : 'Connect Wallet'}
-    </button>
+    </Button>
   )
 }
 
