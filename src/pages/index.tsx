@@ -1,6 +1,7 @@
 import { useWallet } from '@parrotfi/wallets'
+import { Box, Stack, Text, vars } from 'degen'
 import React, { useCallback } from 'react'
-import Skeleton from 'react-loading-skeleton'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 
 import { Button } from '../components/button'
 import { Footer } from '../components/footer'
@@ -44,7 +45,9 @@ const Main = () => {
       {loadingIDO &&
         [1, 2].map((key) => (
           <CardBase key={key} title="Loading...">
-            <Skeleton count={3} height={90} className="mt-2" />
+            <SkeletonTheme highlightColor="#444">
+              <Skeleton count={3} height={90} className="mt-2" />
+            </SkeletonTheme>
           </CardBase>
         ))}
     </main>
@@ -56,32 +59,26 @@ const Page: React.FC = () => {
   const isStarted = IDO_STARTS.isBefore()
 
   return (
-    <div className="min-h-screen flex flex-col bg-scaffold">
-      <Header />
-      <div className="w-full flex justify-center items-center overflow-hidden pt-4">
-        <img
-          className="hidden sm:block"
-          width={'auto'}
-          height={'10rem'}
-          style={{ height: '20rem' }}
-          src={'/images/GEN_FOR_DARK_BG_PNG.png'}
-        />
-        <img
-          className="max-w-none block sm:hidden mt:5rem"
-          width={375}
-          height={415}
-          src={'/images/GEN_FOR_DARK_BG_PNG.png'}
-        />
-      </div>
-      <div>
-        {!isStarted && (
-          <BigCountdown date={IDO_STARTS} onComplete={doForceRefresh} />
-        )}
-        {isStarted && <Main />}
-      </div>
-      <Footer />
-      <FAQs />
-    </div>
+    <Box backgroundColor="background">
+      <Stack>
+        <Header />
+        <Box marginX="auto">
+          <Stack space="10">
+            <Text color="textPrimary" align="center" as="h2" size="headingOne">
+              HONEY FINANCE IDO
+            </Text>
+          </Stack>
+        </Box>
+        <Box>
+          {!isStarted && (
+            <BigCountdown date={IDO_STARTS} onComplete={doForceRefresh} />
+          )}
+          {isStarted && <Main />}
+        </Box>
+        <Footer />
+        <FAQs />
+      </Stack>
+    </Box>
   )
 }
 
