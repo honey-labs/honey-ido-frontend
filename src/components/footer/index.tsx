@@ -10,6 +10,11 @@ const swaps = [
     name: 'Raydium',
     link: 'https://raydium.io/swap/?from=11111111111111111111111111111111&to=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
   },
+  {
+    name: 'Atrix',
+    link: 'https://app.atrix.finance/#/swap?to=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v&from=Ejmc1UB4EsES5oAaRN63SpoxMJidt3ZGBrqrZk49vjTZ',
+  },
+
 ]
 
 export const Footer: React.FC = () => {

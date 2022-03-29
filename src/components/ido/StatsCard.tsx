@@ -152,7 +152,7 @@ const StatsCard: React.FC<StatsCardProps> = ({
         borderRadius="2xLarge"
       >
         <Text size="small" color="textSecondary">
-          SHDW For Sale
+          HONEY For Sale
         </Text>
         <Box
           display="flex"

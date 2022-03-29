@@ -64,7 +64,7 @@ const Page: React.FC = () => {
         <Header />
         <Box marginX="auto">
           <Stack space="10">
-            <Text color="textPrimary" align="center" as="h2" size="headingOne">
+            <Text color="textPrimary" align="center" as="h2" size="headingTwo">
               HONEY FINANCE IDO
             </Text>
           </Stack>

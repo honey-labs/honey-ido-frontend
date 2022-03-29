@@ -252,7 +252,7 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
         disabled={disableSubmit}
         loading={submitting}
       >
-        {submitting ? 'Waiting approval' : 'Redeem SHDW'}
+        {submitting ? 'Waiting approval' : 'Redeem HONEY'}
       </Button>
     </Stack>
   )
