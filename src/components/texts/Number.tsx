@@ -1,4 +1,5 @@
 import BigNumber from 'bignumber.js'
+import { Text, vars } from 'degen'
 import React, { useMemo } from 'react'
 import NumberFormat, { NumberFormatPropsBase } from 'react-number-format'
 
@@ -44,20 +45,25 @@ const NumberText: React.FC<NumberTextProps> = ({
   if (formattedValue === defaultIfNull) {
     return (
       <div className={others.className}>
-        {defaultIfNull}
-        {defaultIfNull === 'N/A' ? '' : others.suffix || ''}
+        <Text>
+          {defaultIfNull}
+          {defaultIfNull === 'N/A' ? '' : others.suffix || ''}
+        </Text>
       </div>
     )
   }
 
   return (
-    <NumberFormat
-      thousandSeparator
-      value={formattedValue}
-      displayType="text"
-      {...others}
-      prefix={prefix}
-    />
+    <Text>
+      <NumberFormat
+        thousandSeparator
+        value={formattedValue}
+        displayType="text"
+        {...others}
+        color={vars.colors.textSecondary}
+        prefix={prefix}
+      />
+    </Text>
   )
 }
 
