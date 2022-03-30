@@ -44,7 +44,7 @@ const faqs = [
         <br />
         <Text>
           Step #4 - Wait until the deposit phase of the IDO expires. The deposit
-          phase opens on Jan 3rd at 2pm UTC and will last for 24 hours in order
+          phase opens on March 30th @ 5pm UTC and will last for 24 hours in order
           to ensure people from all time zones are able to participate.
         </Text>
         <br />
