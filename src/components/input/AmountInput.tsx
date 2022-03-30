@@ -1,6 +1,7 @@
 import { RefreshIcon } from '@heroicons/react/outline'
 import BigNumber from 'bignumber.js'
 import classNames from 'classnames'
+import { Box, Text, vars } from 'degen'
 import React, { useCallback } from 'react'
 import NumberFormat, { NumberFormatValues } from 'react-number-format'
 
@@ -120,9 +121,17 @@ export const AmountInput: React.FC<AmountInputProps> = ({
   )
 
   return (
-    <div className="mb-3">
-      <div className="flex flex-row items-center justify-between mb-3">
-        <label className="flex-1 text-sm font-bold">{title}</label>
+    <Box marginBottom="3">
+      <Box
+        display="flex"
+        flexDirection="row"
+        alignItems="center"
+        justifyContent="space-between"
+        marginBottom="3"
+      >
+        <label className="flex-1 text-sm font-bold">
+          <Text>{title}</Text>
+        </label>
         {!!maxValue && (
           <PercentButton
             disabled={disabled && maxIsLoading}
@@ -132,7 +141,7 @@ export const AmountInput: React.FC<AmountInputProps> = ({
             onChange={handleSelectPercent}
           />
         )}
-      </div>
+      </Box>
       <div
         className={classNames('flex flex-row items-center rounded-lg border', {
           'bg-disabled': disabled,
@@ -203,14 +212,17 @@ export const AmountInput: React.FC<AmountInputProps> = ({
           className="text-xs text-secondary outline-none focus:outline-none text-left"
           onClick={handleSelectMax}
         >
-          {maxLabel} {maxIsLoading ? '' : Number(maxValue).toLocaleString()}
+          <Text>
+            {maxLabel} {maxIsLoading ? '' : Number(maxValue).toLocaleString()}
+          </Text>
           <br />
-          Deposited: {Number(depositedBalance).toLocaleString()}
+          <Text>Deposited: {Number(depositedBalance).toLocaleString()}</Text>
         </button>
         {maxIsLoading && <Spinner className="mx-1" size="sm" />}
         {onRefreshMax && (
           <button disabled={maxIsRefreshing} onClick={onRefreshMax}>
             <RefreshIcon
+              color={vars.colors.text}
               className={classNames('w-3 h-3 ml-1', {
                 'animate-spin': maxIsRefreshing,
               })}
@@ -218,6 +230,6 @@ export const AmountInput: React.FC<AmountInputProps> = ({
           </button>
         )}
       </div>
-    </div>
+    </Box>
   )
 }
