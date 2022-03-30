@@ -46,7 +46,7 @@ const SecPopup = ({ popupCallback }) => {
             <a
               className="text-inputSecondary"
               rel="noreferrer"
-              href="https://genesysgo.medium.com/the-comprehensive-guide-to-genesysgo-and-the-HONEY-ido-278b90d3186c"
+              href="https://medium.com/honeylabs/honey-finance-ido-walkthrough-a4e52f2df9aa"
               target="_blank"
             >
               <Text color="accent" as="span">
