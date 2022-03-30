@@ -3,8 +3,8 @@ import React from 'react'
 
 const swaps = [
   {
-    name: 'Orca',
-    link: 'https://www.orca.so/',
+    name: 'Aldrin',
+    link: 'https://dex.aldrin.com/swap',
   },
   {
     name: 'Raydium',
