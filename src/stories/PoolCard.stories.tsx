@@ -11,7 +11,7 @@ import PoolCard from '../components/ido/PoolCard'
 import { IDO_ENDPOINTS } from '../config/constants'
 import useWalletStore from '../stores/useWalletStore'
 
-const idoConfig = IDO_ENDPOINTS.find((i) => i.network === 'devnet')
+const idoConfig = IDO_ENDPOINTS.find((i) => i.network === 'mainnet-beta')
 
 const getMockPool = (
   status: 'starting' | 'started' | 'ended' | 'startRedeem'
