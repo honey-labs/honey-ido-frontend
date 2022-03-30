@@ -97,7 +97,7 @@ const SecPopup = ({ popupCallback }) => {
           the tokens as well as the tax regime applicable to the holding of
           tokens are not defined to date in certain jurisdictions. Please
           consult your local tax and legal advisor before considering purchasing
-          tokens or interacting with the protocol.
+          tokens or interacting with the protocol. The full terms and conditions can be found here https://docs.honey.finance/links/terms-and-conditions . Clicking accept confirms that you have read teh full terms and conditions.
         </Text>
       </Box>
       <a
