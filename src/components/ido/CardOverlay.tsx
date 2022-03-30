@@ -1,3 +1,4 @@
+import { Box, Stack, Text } from 'degen'
 import React, { ReactNode } from 'react'
 
 import usePool from '../../hooks/usePool'
@@ -24,16 +25,32 @@ const CardOverlay: React.FC<CardOverlayProps> = ({ children, pool, title }) => {
       title={title}
       overlayContent={
         hasOverlay && (
-          <div className="absolute z-10 w-full px-8 h-full flex items-center justify-center">
-            <div className="bg-white w-full p-6 rounded-3xl flex flex-col items-center space-y-3">
-              {notStarted && <h3>Entry Starts</h3>}
-              {notRedeem && <h3>Redeem Starts</h3>}
-              <PoolCountdown
-                date={notStarted ? startIdo : startRedeem}
-                poolStatus={poolStatus}
-              />
-            </div>
-          </div>
+          <Box
+            position="absolute"
+            zIndex="10"
+            width="full"
+            paddingX="8"
+            height="full"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Box
+              backgroundColor="backgroundSecondary"
+              width="full"
+              padding="6"
+              borderRadius="3xLarge"
+            >
+              <Stack align="center" direction="vertical" space="3">
+                {notStarted && <Text as="h3">Entry Starts</Text>}
+                {notRedeem && <Text as="h3">Redeem Starts</Text>}
+                <PoolCountdown
+                  date={notStarted ? startIdo : startRedeem}
+                  poolStatus={poolStatus}
+                />
+              </Stack>
+            </Box>
+          </Box>
         )
       }
       titleRight={
