@@ -28,7 +28,7 @@ const faqs = [
         <Text>
           Step #1 - Connect your wallet (we recommend using Phantom). You will
           need to have USDC in your wallet in order to participate in the IDO.
-          You do not need to own a Shadowy Super Coder NFT in order to
+          You do not need to own a Honey Genesis Bee NFT in order to
           participate in the IDO.
         </Text>
         <br />

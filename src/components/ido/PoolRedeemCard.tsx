@@ -28,7 +28,7 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
   const [submitting, setSubmitting] = useState(false)
   const [loading, setLoading] = useState(true)
 
-  const HONEY_TOTAL = 30_000_000
+  const HONEY_TOTAL = 85_000_000
 
   const contributeBalance = largestAccounts.redeemable?.balance || 0
 
@@ -182,7 +182,7 @@ const PoolRedeemCard: React.FC<PoolRedeemCardProps> = ({ pool }) => {
           />
           <NumberText
             className="font-bold text-mdx"
-            value={usdcBalance / 3000000}
+            value={usdcBalance / 85000000}
             defaultIfNull="N/A"
             displayDecimals={9}
           />

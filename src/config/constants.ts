@@ -35,10 +35,11 @@ export const IDO_RESULTS = {
 export const IDO_ENDPOINTS = [
   {
     network: 'devnet',
-    programId: 'FvsasXFPtyEcGv7cRqutXAydR54DGiR3p3ohjqjn7F8Z',
+    programId: 'FLEhhyUCQynj8bWww89wreiDLALrcGrc4ddTRKsSYNx5',
     usdcMint: 'EvKdW6Jg7pc94Yp9FQzkqdehPLPrjq1itHuiXZgoVYeU',
-    pools: ['5wVgdYy51dBzids34asBKe8mxr1zS2tCkP6DioqcGL2N'],
+    pools: ['5ntMvuHxteYtv2Q3CHDRzZzC4jrNhhbR6Sup96u49rbg'],
   },
+
   // {
   //   network: 'devnet',
   //   programId: '9NN9Wux6ZRg9mhrh9wRFfuDRCsN77C2dp3KrkFDcip8B',
