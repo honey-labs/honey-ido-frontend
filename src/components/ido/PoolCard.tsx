@@ -15,7 +15,7 @@ const PoolCard: React.FC<PoolCardProps> = ({ pool, round }) => {
   const { startIdo, endIdo, startRedeem } = usePool(pool)
 
   return (
-    <CardOverlay title={`IDO HONEY`} pool={pool}>
+    <CardOverlay title={`$HONEY`} pool={pool}>
       {endIdo.isAfter() && <PoolContribCard pool={pool} />}
       {endIdo.isBefore() && <PoolRedeemCard pool={pool} />}
       {/* Debug stats */}
