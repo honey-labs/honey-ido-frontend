@@ -13,10 +13,10 @@ export const IDO_STARTS = moment(process.env.NEXT_PUBLIC_IDO_START)
 
 export const RPC_ENDPOINTS: WalletEndpoint[] = [
   {
-    id: 'devnet',
-    network: 'devnet' as web3.Cluster,
+    id: 'mainnet-beta',
+    network: 'mainnet-beta' as web3.Cluster,
     rpcURL: process.env.NEXT_PUBLIC_RPC_URL,
-    rpcName: 'devnet',
+    rpcName: 'Mainnet-beta',
     commitment: 'processed' as web3.Commitment,
   },
   // {
@@ -29,15 +29,15 @@ export const RPC_ENDPOINTS: WalletEndpoint[] = [
 ]
 
 export const IDO_RESULTS = {
-  caC9KkfCJtEvAQxmNZuHSGqBFFztuMcFRMLDXTo9kte: {},
+  '9rTGX8yaH7c4XsAvdoCprZgeiGJTKMsmNk2J8KNqZaAi': {},
 }
 
 export const IDO_ENDPOINTS = [
   {
-    network: 'devnet',
+    network: 'mainnet-beta',
     programId: 'FLEhhyUCQynj8bWww89wreiDLALrcGrc4ddTRKsSYNx5',
-    usdcMint: 'EvKdW6Jg7pc94Yp9FQzkqdehPLPrjq1itHuiXZgoVYeU',
-    pools: ['5ntMvuHxteYtv2Q3CHDRzZzC4jrNhhbR6Sup96u49rbg'],
+    usdcMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+    pools: ['9rTGX8yaH7c4XsAvdoCprZgeiGJTKMsmNk2J8KNqZaAi'],
   },
 
   // {
@@ -59,7 +59,7 @@ export const IDO_ENDPOINTS = [
 const defaultNode = undefined
 
 export const DEFAULT_RPC = RPC_ENDPOINTS.find((i) => {
-  const r = i.id === `devnet`
+  const r = i.id === `mainnet-beta`
   return r
 })
 
