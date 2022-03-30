@@ -17,7 +17,7 @@ const CountdownBlock: React.FC<CountdownBlockProps> = ({
   return (
     <>
       <Card padding="5">
-        <Box width="20">
+        <Box width="15">
           <Stack>
             <Box>
               <Text align="center" size="headingTwo" color="accent">
@@ -57,8 +57,8 @@ const BigCountdown: React.FC<BigCountdownProps> = ({
       return <div />
     } else {
       return (
-        <Box>
-          <Stack direction="horizontal" justify="center">
+        <Box marginY="10">
+          <Stack wrap direction="horizontal" justify="center">
             <CountdownBlock count={days} label="DAYS" />
             <CountdownBlock count={hours} label="HOURS" />
             <CountdownBlock count={minutes} label="MINS" />
