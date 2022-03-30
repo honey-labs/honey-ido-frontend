@@ -26,7 +26,7 @@ const CardBase: React.FC<CardBaseProps> = ({
         )}
         <Box borderBottomWidth="0.5" padding="6">
           <Text>{title}</Text>
-          {titleRight}
+          {/* {titleRight} */}
         </Box>
         <div className="p-4 sm:p-6 break-words">{children}</div>
       </Box>
