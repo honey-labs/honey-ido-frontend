@@ -26,17 +26,19 @@ const CardOverlay: React.FC<CardOverlayProps> = ({ children, pool, title }) => {
       overlayContent={
         hasOverlay && (
           <Box
-            position="absolute"
-            zIndex="10"
+            position="fixed"
+            zIndex="100"
             width="full"
             paddingX="8"
             height="full"
             display="flex"
+            top="0"
+            left="0"
             alignItems="center"
             justifyContent="center"
           >
             <Box
-              backgroundColor="backgroundSecondary"
+              backgroundColor="background"
               width="full"
               padding="6"
               borderRadius="3xLarge"

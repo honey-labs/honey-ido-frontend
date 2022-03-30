@@ -22,10 +22,10 @@ const CardBase: React.FC<CardBaseProps> = ({
       {overlayContent}
       <Box width="full" height="full">
         {!!overlayContent && (
-          <div className="absolute rounded-3xl z-10 bg-overlay top-0 bottom-0 left-0 right-0" />
+          <div className="fixed  z-10 bg-overlay top-0 bottom-0 left-0 right-0" />
         )}
         <Box borderBottomWidth="0.5" padding="6">
-          <Text>{title}</Text>
+          <Text align="center">{title}</Text>
           {/* {titleRight} */}
         </Box>
         <div className="p-4 sm:p-6 break-words">{children}</div>
