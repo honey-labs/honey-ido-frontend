@@ -2,14 +2,13 @@
 
 A modification of the [Mango Token Sale](https://github.com/blockworks-foundation/mango-token-sale) and Aurory IDO.
 
-
-
 # Security
 
 Review that mainnet addresses in [constants.ts](./src/config/constants.ts) match the GenesysGo IDO mainnet addresses:
-* programId: BRkhzczJALNLNbaYtLiuo4yQi6i33fQDt3z1wiujyKU4
-* usdcMint: EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v
-* pools: 9KLppKiDcTiaonj55PmwiZCDU62R6JFz1uPEc26wXB5J
+
+- programId: BRkhzczJALNLNbaYtLiuo4yQi6i33fQDt3z1wiujyKU4
+- usdcMint: EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v
+- pools: 9KLppKiDcTiaonj55PmwiZCDU62R6JFz1uPEc26wXB5J
 
 # Serving The UI
 
@@ -23,7 +22,7 @@ For example, to use python's http server:
 
 Then open http://localhost:8899, you should see the IDO UI:
 
-![](https://github.com/Shadowy-Super-Coder-DAO/shdw-ido-frontend/blob/master/images/ido-ggui.PNG)
+![](https://github.com/Shadowy-Super-Coder-DAO/HONEY-ido-frontend/blob/master/images/ido-ggui.PNG)
 
 # Development
 

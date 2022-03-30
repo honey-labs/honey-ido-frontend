@@ -136,6 +136,8 @@ const PoolContribCard: React.FC<PoolContribCardProps> = ({ pool }) => {
   const totalBalance = isDeposit ? usdcBalance : redeemableBalance
   const [confirmModalOpen, setConfirmModalOpen] = useState(false)
 
+  // const [estdPrice, setEstdPrice] = useState(0);
+
   useEffect(() => {
     setInputAmount('')
   }, [totalBalance])

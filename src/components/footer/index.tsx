@@ -14,7 +14,6 @@ const swaps = [
     name: 'Atrix',
     link: 'https://app.atrix.finance/#/swap?to=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v&from=Ejmc1UB4EsES5oAaRN63SpoxMJidt3ZGBrqrZk49vjTZ',
   },
-
 ]
 
 export const Footer: React.FC = () => {
@@ -37,7 +36,8 @@ export const Footer: React.FC = () => {
             </a>{' '}
           </span>
         ))}
-        or transfer USDC from a CEX (FTX, Binance, etc) on the Solana network.
+        or transfer USDC from a CEX (FTX, Binance, Coinbase etc) on the Solana
+        network.
         <br />
       </Text>
       {/* <div className="mt-2"><a className="underline text-inputSecondary" href="https://b5248a16.sibforms.com/serve/MUIEAHTnEW8RVVNoC8ehxvP_9x2kwbOfTGwt5cfMQ0g7rx7t7GAGl5RTZx3j2lF3uIBBNVeLDkswDoQbROaBl7soNYCxUNZiTJ3YkrWJGonnLZx6cTymSDioMEZe290x6Sw13yIxSjiyby7WBRqmrA4hdKnI0uL0L48Uhn2695dm8VK7XPqJpWWEDpzHkZrInkPg3faTyIGQJqIG" target="_blank" rel="noreferrer">Get notified of our future sales</a></div> */}

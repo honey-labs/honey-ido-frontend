@@ -21,8 +21,8 @@ function MyApp({ Component, pageProps }) {
   const title = 'Honey IDO'
   const description =
     'This is the IDO (initial DEX offering) page for Honey Finance.'
-  const keywords = 'Genesys Go, Shadowy Super Coder Dao, SSC DAO, SSC, Solana'
-  const baseUrl = 'https://ido.genesysgo.com'
+  const keywords = 'Honey Finance, Honey Genesis Bee, IDO, Solana'
+  const baseUrl = 'https://ido.honey.finance'
 
   const router = useRouter()
 
