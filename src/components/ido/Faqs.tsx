@@ -4,8 +4,8 @@ import { Box, Stack, Text, vars } from 'degen'
 
 const faqs = [
   {
-    question: 'When is the IDO taking place?',
-    answer: 'The IDO begins on January 3rd, 2022 @ 2:00pm UTC',
+    question: 'When does the IDO start / finish?',
+    answer: 'The IDO begins on March 30th, 2022 5:00pm UTC and ends exactly 24 hours later on March 31st',
   },
   {
     question: 'Will I need SOL in my wallet?',
@@ -14,12 +14,12 @@ const faqs = [
   },
   {
     question: 'Will I need USDC?',
-    answer: 'Yes, the IDO deposits will be placed in USDC',
+    answer: 'Yes, you will need to deposit your investment in USDC.',
   },
   {
     question: 'Where will the token be listed post-IDO?',
     answer:
-      'Thus far we have gotten firm confirmation of listings on Orca, Raydium, and Aldrin DEX (with more to come)!',
+      'We will be using our partners Atrix Finance ',
   },
   {
     question: 'How does the IDO work?',
@@ -59,17 +59,21 @@ const faqs = [
           Step #6 - Congratulations! Your $HONEY tokens are now in your wallet!
         </Text>
         <br />
+        <Text>
+          Credit to GenesysGo and Mango Markets for setting up this style of IDO.
+        </Text>
+        <br />
       </>
     ),
   },
   {
-    question: `Where do I need to start accruing my USDC?`,
-    answer: `Your Phantom wallet! Phantom's code is battle tested and we love the focus they have on protecting their users. So, you'll just be connecting your Phantom wallet to the IDO site. Ez pz!`,
+    question: `I bought USDC on a Centralised Exchange (Coinbase, Binance, etc.) where do I send my USDC?`,
+    answer: `You can send USDC to your Phantom wallet. Download phantom, send USDC (and at least 0.05 SOL for GAS) then connect with your phantom wallet.`,
   },
   {
-    question: `Can I participate in the IDO even if I don't have a SSC NFT?`,
+    question: `Can I participate in the IDO even if I don't have a Honey Genesis Bee NFT?`,
     answer:
-      'Of course! The IDO is not tied to owning a Shadowy Super Coder NFT.',
+      'Yes ! The IDO is not tied to owning a Honey Genesis Bee NFT.',
   },
   {
     question: `My transaction timed out while trying to deposit.`,
