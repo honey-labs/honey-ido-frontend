@@ -18,7 +18,7 @@ const CardBase: React.FC<CardBaseProps> = ({
   className,
 }) => {
   return (
-    <Card width="96">
+    <Card width={{ lg: '112', md: '112', sm: '112', xs: '80' }}>
       {overlayContent}
       <Box width="full" height="full">
         {!!overlayContent && (
